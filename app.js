@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-app.get("/see",(req,res)=>{
+/*app.get("/see",(req,res)=>{
     res.render("lists/home.ejs",{isHome:false});
-})
+})*/
 
 app.get("/",(req,res)=>{
     res.render("lists/about.ejs", { isHome: false });

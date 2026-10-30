@@ -1,81 +1,139 @@
 
-/* =========================================
-   ARSHANA — ABOUT PAGE ANIMATIONS
-========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".hero-bg-image");
+    const cardImage = document.querySelector(".hero-card-image");
+    const slideCount = document.querySelector(".hero-slide-count");
+    const progress = document.querySelector(".hero-progress-fill");
+    const nextButton = document.querySelector(".hero-next");
+    const prevButton = document.querySelector(".hero-prev");
 
-(() => {
-    "use strict";
+    if (!slides.length || !cardImage) return;
 
-    const initAnimations = () => {
-        const revealElements = document.querySelectorAll(".reveal");
+    // Images used in the floating card
+    const cardImages = [
+        "/assets/image2.png",
+        "/assets/image3.png",
+        "/assets/image1.png"
+    ];
 
-        if (!revealElements.length) return;
+    let currentSlide = 0;
+    let sliderInterval;
 
-        // Respect the visitor's accessibility preferences.
-        const reduceMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+    function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
 
-        if (reduceMotion || !("IntersectionObserver" in window)) {
-            revealElements.forEach((element) => {
-                element.classList.add("is-visible");
-            });
+        currentSlide = (index + slides.length) % slides.length;
 
-            return;
-        }
+        slides[currentSlide].classList.add("active");
 
-        // Enable reveal styling only when animation support is ready.
-        document.documentElement.classList.add("has-reveal");
+        // Change the floating card image
+        cardImage.style.opacity = "0";
 
-        // Stagger cards and list items for a subtle editorial effect.
-        const groups = [
-            ".values-grid",
-            ".purpose-grid",
-            ".approach-list"
-        ];
+        setTimeout(() => {
+            cardImage.src = cardImages[currentSlide];
+            cardImage.style.opacity = "1";
+        }, 300);
 
-        groups.forEach((selector) => {
-            document.querySelectorAll(selector).forEach((group) => {
-                const children = group.querySelectorAll(".reveal");
+        // Update slide number
+        slideCount.textContent = String(currentSlide + 1).padStart(2, "0");
 
-                children.forEach((element, index) => {
-                    element.style.setProperty(
-                        "--reveal-delay",
-                        `${Math.min(index * 100, 300)}ms`
-                    );
-                });
-            });
-        });
+        // Update progress
+        progress.style.width =
+            ((currentSlide + 1) / slides.length) * 100 + "%";
 
-        const observer = new IntersectionObserver(
-            (entries, currentObserver) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-
-                    entry.target.classList.add("is-visible");
-
-                    // Animate once; avoid repeated movement on scroll.
-                    currentObserver.unobserve(entry.target);
-                });
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -35px 0px"
-            }
-        );
-
-        revealElements.forEach((element) => {
-            observer.observe(element);
-        });
-    };
-
-    if (document.readyState === "loading") {
-        document.addEventListener(
-            "DOMContentLoaded",
-            initAnimations,
-            { once: true }
-        );
-    } else {
-        initAnimations();
     }
-})();
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function previousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startSlider() {
+        clearInterval(sliderInterval);
+        sliderInterval = setInterval(nextSlide, 3000);
+    }
+
+    nextButton.addEventListener("click", () => {
+        nextSlide();
+        startSlider();
+    });
+
+    prevButton.addEventListener("click", () => {
+        previousSlide();
+        startSlider();
+    });
+
+    showSlide(0);
+    startSlider();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const whySection = document.querySelector(".arshana-why-section");
+
+    if (!whySection) return;
+
+    const whyCards = whySection.querySelectorAll(".why-card");
+
+    // Enable animation styles
+    whySection.classList.add("why-motion-ready");
+
+    const whyObserver = new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                const card = entry.target;
+
+                card.classList.add("why-card-visible");
+
+                whyObserver.unobserve(card);
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    whyCards.forEach((card) => {
+        whyObserver.observe(card);
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+// foooter css //////////////////////
+
+const footerYear = document.getElementById("footer-current-year");
+
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
