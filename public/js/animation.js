@@ -126,6 +126,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// about page capability section//
+document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".arshana-capability-section");
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                section.classList.add("is-visible");
+                observer.unobserve(section);
+            }
+        });
+    }, {
+        threshold: 0.18
+    });
+
+    observer.observe(section);
+});
+
+
+
+
+
 
 
 
