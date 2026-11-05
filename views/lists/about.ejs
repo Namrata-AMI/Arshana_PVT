@@ -1,507 +1,144 @@
 
 <% layout("/layouts/boilerplate.ejs") %>
 
-<!-- ==========================================
-     ARSHANA — HERO SECTION
-========================================== -->
+<main class="ar-about">
 
-<section class="arshana-hero" id="top">
+  <header class="ar-about-nav">
+    <a href="/" class="ar-about-brand">ARSHANA<span>.</span></a>
+    <span class="ar-brand-caption">PROJECT PRIVATE LIMITED</span>
 
-    <!-- BACKGROUND SLIDES -->
-    <div class="hero-background">
-        <img src="/assets/image4.png" class="hero-bg-image active" alt="Industrial pipeline infrastructure">
-        <img src="/assets/image2.png" class="hero-bg-image" alt="Industrial engineering">
-        <img src="/assets/image3.png" class="hero-bg-image" alt="Infrastructure project">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about" class="active">About</a>
+      <a href="/services">Services</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact" class="ar-nav-contact">Let's talk ↗</a>
+    </nav>
+  </header>
+
+  <section class="ar-about-stage">
+
+    <div class="ar-stage-heading">
+      <div class="hero-slide-right hero-slide-paragraph">
+        <h1>Engineering<br><span>that connects.</span></h1>
+      </div>
+      <p>
+        We approach infrastructure with technical understanding,
+        thoughtful planning and purposeful execution.
+      </p>
     </div>
 
-    <!-- DARK OVERLAY -->
-    <div class="hero-overlay"></div>
-
-    <!-- HERO CONTENT -->
-    <div class="hero-content container">
-
-        <div class="hero-top-label">
-            <span class="hero-label-line"></span>
-            GAS PIPELINE ENGINEERING · INFRASTRUCTURE
-        </div>
-
-        
-<div class="hero-main-grid">
-
-    <!-- LEFT SIDE -->
-    <div class="hero-heading-area">
-
-
-        <h1>
-            Engineering
-            <span>the networks</span>
-            that move energy.
-        </h1>
-
-        <div class="hero-bottom-line">
-            <span class="hero-slide-count">01</span>
-            <span class="hero-count-divider"></span>
-            <span>PRECISION. PERFORMANCE. PROGRESS.</span>
-        </div>
-
-
+    <div class="ar-floating-tabs">
+      <a href="#ar-company">01 <span>Company</span></a>
+      <a href="#ar-purpose">02 <span>Purpose</span></a>
+      <a href="#ar-values">03 <span>Values</span></a>
+      <a href="#ar-approach">04 <span>Approach</span></a>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="hero-description-area">
+    <div class="ar-dashboard-grid">
 
-        <span class="hero-side-label hero-slide-right">
-            ENGINEERED FOR TOMORROW
-        </span>
+      <!-- MAIN IMAGE -->
+      <article class="ar-card ar-main-image">
+        <img src="/assets/image4.png" alt="Industrial pipeline infrastructure">
+        <div class="ar-image-shade"></div>
 
-        <p class="hero-slide-right hero-slide-paragraph">
-            Delivering gas pipeline engineering and infrastructure
-            solutions through technical expertise, careful planning
-            and a commitment to safe, dependable project execution.
-        </p>
-
-        <a href="/services" class="hero-secondary-btn">
-            Explore our services
-            <span>↗</span>
-        </a>
-
-    </div>
-
-</div>
-
-        <!-- SLIDER CONTROLS -->
-        <div class="hero-slider-controls">
-
-            <button class="hero-slider-btn hero-prev" aria-label="Previous slide">
-                ←
-            </button>
-
-            <div class="hero-slider-progress">
-                <span class="hero-progress-fill"></span>
-            </div>
-
-            <button class="hero-slider-btn hero-next" aria-label="Next slide">
-                →
-            </button>
-
+        <div class="ar-image-top">
+          <span>ENGINEERING / INFRASTRUCTURE</span>
+          <span>APPL — 001</span>
         </div>
 
-        <!-- VERTICAL SIDE TEXT -->
-        <div class="hero-vertical-text">
-            ARSHANA PROJECT PRIVATE LIMITED
+        <div class="ar-image-bottom">
+          <div>
+            <span>OUR WORLD. OUR WORK.</span>
+            <h2>Built for<br>what's next.</h2>
+          </div>
+          <a href="/services">↗</a>
+        </div>
+      </article>
+
+      <!-- COMPANY CARD -->
+      <article class="ar-card ar-company-card" id="ar-company">
+        <div class="ar-card-heading">
+          <span>01 / THE COMPANY</span>
+          <span class="ar-card-dot"></span>
         </div>
 
-    </div>
+        <div class="ar-company-symbol">A.</div>
 
-    <!-- FLOATING FEATURE CARD -->
-    <div class="hero-feature-card">
+        <div class="ar-company-copy">
+          <h3>Beyond<br>the blueprint.</h3>
+          <p>
+            Arshana Project Private Limited focuses on gas
+            pipeline engineering and infrastructure solutions.
+            We bring together technical understanding,
+            coordinated planning and a practical approach
+            to project execution.
+          </p>
+          <a href="/services">EXPLORE CAPABILITIES <span>↗</span></a>
+        </div>
+      </article>
 
-        <div class="hero-feature-image">
-            <img src="/assets/image2.png" class="hero-card-image" alt="Industrial engineering and infrastructure">
-            <span class="hero-image-tag">OUR APPROACH</span>
+      <!-- PURPOSE CARD -->
+      <article class="ar-card ar-purpose-card" id="ar-purpose">
+        <div class="ar-card-heading">
+          <span>02 / OUR PURPOSE</span>
+          <span>✳</span>
         </div>
 
-        <div class="hero-feature-content">
+        <div class="ar-purpose-content">
+          <span class="ar-mini-label">WHAT DRIVES US</span>
+          <h3>Progress<br>with <span>purpose.</span></h3>
+          <p>Every project deserves clarity, coordination and care.</p>
+        </div>
+        <span class="ar-card-number">A — 02</span>
+      </article>
 
-            <span class="hero-feature-number">01 / ENGINEERING</span>
-
-            <h3>
-                Connecting energy.<br>
-                <span>Building progress.</span>
-            </h3>
-
-            <p>
-                Engineering solutions that bring infrastructure,
-                technical precision and execution together.
-            </p>
-
-            <a href="/about" aria-label="Learn more about Arshana">↗</a>
-
+      <!-- APPROACH CARD -->
+      <article class="ar-card ar-approach-card" id="ar-approach">
+        <div class="ar-card-heading">
+          <span>03 / OUR APPROACH</span>
+          <span>↗</span>
         </div>
 
-    </div>
-
-</section>
-
-
-
-
-
-<!-- ==========================================
-     ARSHANA — WHO WE ARE
-========================================== -->
-
-
-
-
-
-
-
-<!-- ==========================================
-     ARSHANA — WHY CHOOSE US
-========================================== -->
-
-<section class="arshana-why-section" id="why-arshana">
-
-    <div class="container">
-
-        <!-- SECTION HEADING -->
-        <div class="why-section-heading">
-
-            <span class="why-eyebrow">
-                <span class="why-eyebrow-line"></span>
-                THE ARSHANA DIFFERENCE
-            </span>
-
-            <h2>
-                The standards behind
-                <span>every connection.</span>
-            </h2>
-
-            <p>
-                From pipeline planning to project execution,
-                we value clear coordination, technical attention,
-                quality and responsible working practices.
-            </p>
-
+        <div class="ar-approach-art">
+          <div class="ar-orbit orbit-one"></div>
+          <div class="ar-orbit orbit-two"></div>
+          <div class="ar-orbit orbit-three"></div>
+          <span>A.</span>
         </div>
 
+        <h3>Thoughtful at every stage.</h3>
+        <p>Planning. Coordination. Execution.</p>
+      </article>
 
-        <!-- CENTRAL IMAGE AND FLOATING CARDS -->
-        <div class="why-visual-wrapper">
-
-            <!-- CENTRAL IMAGE -->
-            <div class="why-central-image">
-
-                <img
-                    src="/assets/image1.png"
-                    alt="Engineering and infrastructure project"
-                    loading="lazy"
-                >
-
-                <div class="why-image-overlay"></div>
-
-                <!-- CENTRAL BRAND MARK -->
-                <div class="why-image-mark">
-                    <span>A.</span>
-                </div>
-
-            </div>
-
-
-            <!-- LEFT FEATURE CARDS -->
-            <div class="why-card why-card-left why-card-one">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-compass-drafting"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">01 / APPROACH</span>
-
-                    <h3>Thoughtful Planning</h3>
-
-                    <p>
-                        A considered approach to project planning,
-                        coordination and execution.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="why-card why-card-left why-card-two">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-helmet-safety"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">02 / SAFETY</span>
-
-                    <h3>Safety Conscious</h3>
-
-                    <p>
-                        Keeping safety and responsibility in focus
-                        throughout project activities.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="why-card why-card-left why-card-three">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-people-arrows-left-right"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">03 / TEAMWORK</span>
-
-                    <h3>Coordinated Effort</h3>
-
-                    <p>
-                        Bringing people, processes and technical
-                        requirements together.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- RIGHT FEATURE CARDS -->
-            <div class="why-card why-card-right why-card-four">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-gears"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">04 / ENGINEERING</span>
-
-                    <h3>Technical Focus</h3>
-
-                    <p>
-                        Giving attention to engineering details
-                        and project requirements.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="why-card why-card-right why-card-five">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-award"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">05 / QUALITY</span>
-
-                    <h3>Quality Mindset</h3>
-
-                    <p>
-                        A consistent focus on workmanship,
-                        standards and project quality.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="why-card why-card-right why-card-six">
-
-                <div class="why-card-icon">
-                    <i class="fa-solid fa-arrow-trend-up"></i>
-                </div>
-
-                <div class="why-card-content">
-
-                    <span class="why-card-number">06 / DELIVERY</span>
-
-                    <h3>Purposeful Execution</h3>
-
-                    <p>
-                        Moving projects forward with clear
-                        priorities and defined objectives.
-                    </p>
-
-                </div>
-
-            </div>
-
+      <!-- VALUES CARD -->
+      <article class="ar-card ar-values-card" id="ar-values">
+        <div class="ar-card-heading">
+          <span>04 / WHAT GUIDES US</span>
+          <span>OUR VALUES</span>
         </div>
 
-
-        <!-- BOTTOM STATEMENT -->
-        <div class="why-bottom-line">
-
-            <div class="why-bottom-left">
-                <span class="why-bottom-indicator"></span>
-                <span>OUR COMMITMENT</span>
-            </div>
-
-            <p>
-                Every detail matters. Every decision moves the project forward.
-            </p>
-
-            <a href="/about" class="why-bottom-link">
-                Learn more about us
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
+        <div class="ar-values-list">
+          <div><span>01</span><strong>Technical focus</strong><b>↗</b></div>
+          <div><span>02</span><strong>Quality mindset</strong><b>↗</b></div>
+          <div><span>03</span><strong>Coordinated effort</strong><b>↗</b></div>
+          <div><span>04</span><strong>Responsible execution</strong><b>↗</b></div>
         </div>
+      </article>
 
     </div>
 
-</section>
-
-
-
-
-<!-- ==========================================
-     ARSHANA — ENGINEERING CAPABILITIES
-========================================== -->
-
-<section class="arshana-capability-section" id="capabilities">
-
-    <div class="container">
-
-        <div class="capability-layout">
-
-            <!-- LEFT CONTENT -->
-            <div class="capability-content">
-
-                <span class="capability-eyebrow">
-                    <span class="capability-eyebrow-line"></span>
-                    PIPELINE ENGINEERING & PROJECT DELIVERY
-                </span>
-
-                <h2>
-                    From pipeline design
-                    <span>to project execution.</span>
-                </h2>
-
-
-                <!-- HIGHLIGHT PANEL -->
-                <div class="capability-highlight">
-
-                    <span class="capability-highlight-number">01</span>
-
-                    <div class="capability-highlight-content">
-
-                        <span>OUR APPROACH</span>
-
-                        <h3>Precision across every stage.</h3>
-
-                    </div>
-
-                    <span class="capability-highlight-arrow">↗</span>
-
-                </div>
-
-
-                <p class="capability-description">
-                    Pipeline and infrastructure projects require
-                    careful planning, technical coordination and
-                    attention to detail. Our approach brings these
-                    elements together to support organised and
-                    dependable project execution.
-                </p>
-
-
-                <a href="/services" class="capability-cta">
-
-                    <span>Discover our capabilities</span>
-
-                    <span class="capability-cta-icon">↗</span>
-
-                </a>
-
-            </div>
-
-
-            <!-- RIGHT VISUAL -->
-            <div class="capability-visual">
-
-                <!-- MAIN IMAGE -->
-                <div class="capability-main-image">
-
-                    <img
-                        src="/assets/image4.png"
-                        alt="Industrial pipeline and infrastructure engineering"
-                        loading="lazy"
-                    >
-
-                    <div class="capability-image-overlay"></div>
-
-                    <div class="capability-image-caption">
-                        <span>ENGINEERING IN ACTION</span>
-                        <span>ARSHANA PROJECT PRIVATE LIMITED</span>
-                    </div>
-
-                </div>
-
-
-                <!-- VERTICAL DETAIL TILES -->
-                <div class="capability-side-list">
-
-                    <div class="capability-side-item active">
-
-                        <span>01</span>
-
-                        <div>
-                            <i class="fa-solid fa-drafting-compass"></i>
-                        </div>
-
-                    </div>
-
-
-                    <div class="capability-side-item">
-
-                        <span>02</span>
-
-                        <div>
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-
-                    </div>
-
-
-                    <div class="capability-side-item">
-
-                        <span>03</span>
-
-                        <div>
-                            <i class="fa-solid fa-helmet-safety"></i>
-                        </div>
-
-                    </div>
-
-
-                    <div class="capability-side-item">
-
-                        <span>04</span>
-
-                        <div>
-                            <i class="fa-solid fa-arrow-trend-up"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- BOTTOM SECTION LINE -->
-        <div class="capability-bottom">
-
-            <span>APPL — 02 / OUR CAPABILITIES</span>
-
-            <span class="capability-bottom-line"></span>
-
-            <a href="/projects">
-                EXPLORE OUR PROJECTS
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
-        </div>
-
+    <div class="ar-stage-footer">
+      <span>ARSHANA PROJECT PRIVATE LIMITED</span>
+      <span>ENGINEERING · INFRASTRUCTURE · EXECUTION</span>
+      <span>ABOUT / 01—06</span>
     </div>
 
-</section>
+  </section>
+
+  <section class="ar-about-end hero-slide-right hero-slide-paragraph"">
+    <h2>Ideas into infrastructure.<br><span>Purpose into progress.</span></h2>
+    <a href="/contact">START A CONVERSATION ↗</a>
+  </section>
+
+</main>

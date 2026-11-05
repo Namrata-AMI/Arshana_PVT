@@ -18,7 +18,17 @@ app.use(express.static(path.join(__dirname, "public")));
 })*/
 
 app.get("/",(req,res)=>{
-    res.render("lists/about.ejs", { isHome: false });
+    res.render("lists/home.ejs", { isHome: false });
+})
+
+
+app.get("/about",(req,res)=>{
+    res.render("lists/about.ejs");
+})
+
+
+app.get("/services",(req,res)=>{
+    res.render("lists/service.ejs");
 })
 
 app.listen(8080,()=>{

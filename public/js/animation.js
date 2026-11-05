@@ -536,17 +536,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/**********cursor animation .....********** */
+
+
+// ==========================================
+// ARSHANA — HERO IMAGE SLIDER
+// ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    const cursor = document.querySelector(".custom-cursor");
 
-    if (!cursor || window.matchMedia("(pointer: coarse)").matches) return;
+    const hero = document.querySelector(".arshana-hero");
 
-    document.addEventListener("mousemove", (event) => {
-        cursor.style.left = `${event.clientX}px`;
-        cursor.style.top = `${event.clientY}px`;
+    if (!hero) return;
+
+    const slides = Array.from(
+        hero.querySelectorAll(".hero-bg-image")
+    );
+
+    const prevButton = hero.querySelector(".hero-prev");
+    const nextButton = hero.querySelector(".hero-next");
+    const progress = hero.querySelector(".hero-progress-fill");
+    const slideCount = hero.querySelector(".hero-slide-count");
+
+    if (slides.length < 2) return;
+
+    let currentIndex = 0;
+    let sliderInterval;
+
+    const duration = 1800;
+
+    function showSlide(index) {
+
+        currentIndex = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === currentIndex);
+        });
+
+        if (slideCount) {
+            slideCount.textContent =
+                `0${currentIndex + 1}`;
+        }
+
+        if (progress) {
+            progress.style.transition = "none";
+            progress.style.width = "0%";
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    progress.style.transition =
+                        `width ${duration}ms linear`;
+                    progress.style.width = "100%";
+                });
+            });
+        }
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function previousSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    function startSlider() {
+        clearInterval(sliderInterval);
+        showSlide(currentIndex);
+
+        sliderInterval = setInterval(nextSlide, duration);
+    }
+
+    nextButton?.addEventListener("click", () => {
+        nextSlide();
+        startSlider();
     });
+
+    prevButton?.addEventListener("click", () => {
+        previousSlide();
+        startSlider();
+    });
+
+    startSlider();
+
 });
 
 
@@ -583,6 +654,140 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+/////////////////////////////  about js //////////////////////////////
+
+
+
+
+/* ARSHANA — TILTING CARD ENTRANCE */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".ar-card");
+
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add("ar-card-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  cards.forEach((card) => observer.observe(card));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////// services css ////////////////////////////////
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const page = document.querySelector(".ar-services");
+
+  if (!page) return;
+
+  const revealElements = page.querySelectorAll(`
+    .service-directory,
+    .service-details,
+    .service-detail-card,
+    .service-process,
+    .service-cta
+  `);
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
+    }
+  );
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+  page.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href");
+
+      if (!targetId || targetId === "#") return;
+
+      const target = page.querySelector(targetId);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  });
+});
+
+
+
+
+const revealElements = page.querySelectorAll(`
+  .service-directory,
+  .service-details,
+  .service-detail-card,
+  .service-process,
+  .service-cta
+`);
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      } else {
+        entry.target.classList.remove("is-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});
 
 
 
