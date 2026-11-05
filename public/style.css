@@ -256,6 +256,12 @@ img {
    03. NAVBAR
 ========================================================= */
 
+
+
+/* =========================================================
+   03. ARSHANA NAVBAR — GLASS + ANIMATED GRADIENT
+========================================================= */
+
 .arshana-navbar {
     position: fixed;
     top: 20px;
@@ -263,8 +269,9 @@ img {
     z-index: 1030;
     width: calc(100% - 32px);
     margin-inline: 16px;
-    border: none;
+    padding: 0;
     background: transparent !important;
+    transition: top .35s ease;
 }
 
 .arshana-nav-container {
@@ -272,31 +279,35 @@ img {
     align-items: center;
     justify-content: space-between;
     max-width: 1440px;
-    min-height: 60px;
-    padding-inline: 30px;
-    border: 1px solid rgba(255,255,255,.4);
+    min-height: 62px;
+    padding: 7px 30px;
+    border: 1px solid rgba(255, 255, 255, .65);
     border-radius: 100px;
-    transition: background .3s ease, border-color .3s ease;
-
-    background: rgba(255, 255, 255, .55);
-    border-color: rgba(255, 255, 255, .65);
+    background: rgba(255, 255, 255, .76);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
 }
 
-
+/* BRAND */
 
 .arshana-navbar .arshana-brand {
+    display: flex;
+    align-items: center;
     padding: 0;
     margin: 0;
     text-decoration: none;
 }
 
 .arshana-navbar .about-brand {
-    color: #fff;
+    color: var(--arshana-navy);
     font-family: var(--font-heading);
     font-size: 23px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: .4px;
     white-space: nowrap;
 }
@@ -305,10 +316,20 @@ img {
     color: var(--arshana-orange);
 }
 
+.arshana-navbar .arshana-logo {
+    display: block;
+    width: 150px;
+    height: 46px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* NAVIGATION */
+
 .arshana-navbar .navbar-collapse {
     flex-grow: 0;
     align-items: center;
-    gap: 32px;
+    gap: 30px;
 }
 
 .arshana-nav-links {
@@ -325,31 +346,69 @@ img {
     font-family: var(--font-body);
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap;
     transition: color .3s ease;
 }
 
+/* HOVER */
 
-.arshana-navbar .nav-link:hover,
-.arshana-navbar .nav-link.active {
+.arshana-navbar .nav-link:hover {
     color: var(--arshana-orange) !important;
 }
 
+/* ACTIVE LINK — ANIMATED GRADIENT */
+
+.arshana-navbar .nav-link.active {
+    background: linear-gradient(
+        110deg,
+        #e8753b,
+        #ffbd78,
+        #e8753b,
+        #d95c2b
+    );
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: arshanaNavGradient 3s linear infinite;
+}
+
+/* ANIMATED UNDERLINE */
+
 .arshana-navbar .nav-link::after {
     position: absolute;
-    right: 0;
     bottom: 4px;
     left: 0;
     width: 0;
     height: 2px;
     content: "";
-    background: var(--arshana-orange);
-    transition: width .3s ease;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        #e8753b,
+        #ffbd78,
+        #e8753b
+    );
+    background-size: 200% auto;
+    transition: width .35s ease;
 }
 
 .arshana-navbar .nav-link:hover::after,
 .arshana-navbar .nav-link.active::after {
     width: 100%;
 }
+
+.arshana-navbar .nav-link.active::after {
+    animation: arshanaNavGradient 3s linear infinite;
+}
+
+@keyframes arshanaNavGradient {
+    to {
+        background-position: 250% center;
+    }
+}
+
+/* CTA BUTTON */
 
 .arshana-nav-btn {
     display: inline-flex;
@@ -359,13 +418,14 @@ img {
     min-width: 195px;
     min-height: 48px;
     padding: 5px 6px 5px 18px;
-    border: 1px solid rgba(232,117,59,.85);
+    border: 1px solid rgba(232, 117, 59, .85);
     border-radius: 50px;
-    background: rgba(25,55,91,.88);
+    background: rgba(25, 55, 91, .95);
     color: #fff;
     font-size: 11px;
     font-weight: 600;
-    transition: var(--transition);
+    white-space: nowrap;
+    transition: all .35s ease;
 }
 
 .arshana-nav-btn:hover {
@@ -384,7 +444,7 @@ img {
     border-radius: 50%;
     background: var(--arshana-orange);
     color: #fff;
-    transition: .3s ease;
+    transition: all .35s ease;
 }
 
 .arshana-nav-btn:hover .nav-btn-icon {
@@ -393,9 +453,11 @@ img {
     transform: rotate(45deg);
 }
 
+/* TOGGLER */
+
 .arshana-navbar .arshana-toggler {
     padding: 9px;
-    border: 1px solid rgba(255,255,255,.6);
+    border: 1px solid rgba(25, 55, 91, .2);
     box-shadow: none;
 }
 
@@ -404,8 +466,45 @@ img {
     width: 23px;
     height: 2px;
     margin: 5px 0;
-    background: #fff;
+    background: var(--arshana-navy);
 }
+
+/* SCROLLED NAVBAR */
+
+.arshana-navbar.is-scrolled {
+    top: 10px;
+}
+
+.arshana-navbar.is-scrolled .arshana-nav-container {
+    background: rgba(255, 255, 255, .97);
+    border-color: rgba(25, 55, 91, .12);
+    box-shadow: 0 10px 32px rgba(16, 39, 67, .14);
+}
+
+.arshana-navbar.is-scrolled .about-brand {
+    color: var(--arshana-navy);
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .arshana-navbar *,
+    .arshana-navbar *::before,
+    .arshana-navbar *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 /* =========================================================
    04. HERO SECTION
@@ -2901,7 +3000,12 @@ img {
 
 
 /* ==========================================
-   ARSHANA ABOUT — DARK MODULAR INTERFACE
+   ARSHANA — EDITORIAL ABOUT PAGE
+========================================== */
+
+
+/* ==========================================
+   ARSHANA — ANIMATED GRADIENT ATMOSPHERE
 ========================================== */
 
 .ar-about {
@@ -2912,26 +3016,152 @@ img {
   --ar-cream: #f5f3ef;
   --ar-muted: #a2acb8;
 
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   padding: 0 5%;
   overflow: hidden;
-  background: var(--ar-bg);
+  background: #0b1420;
   color: var(--ar-cream);
 }
 
-/* NAVIGATION */
+/* Large, soft-moving gradient haze */
+.ar-about::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: -35%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 25%,
+      rgba(36, 91, 145, .48) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 78% 18%,
+      rgba(49, 103, 158, .34) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 65% 65%,
+      rgba(27, 67, 111, .48) 0%,
+      transparent 44%
+    ),
+    radial-gradient(
+      ellipse at 20% 82%,
+      rgba(30, 91, 119, .25) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 88% 88%,
+      rgba(190, 91, 51, .16) 0%,
+      transparent 32%
+    );
+
+  filter: blur(65px);
+  transform: translate3d(0, 0, 0) scale(1);
+  animation: arGradientFlow 28s ease-in-out infinite alternate;
+}
+
+/* Gentle secondary light haze */
+.ar-about::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      125deg,
+      transparent 15%,
+      rgba(87, 143, 194, .045) 42%,
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(75, 121, 166, .07),
+      transparent 65%
+    );
+
+  opacity: .8;
+  animation: arLightBreath 18s ease-in-out infinite alternate;
+}
+
+/* Slow gradient movement */
+@keyframes arGradientFlow {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(2%, 1%, 0) scale(1.05);
+  }
+
+  100% {
+    transform: translate3d(-1%, 2%, 0) scale(1.02);
+  }
+}
+
+/* Very subtle light intensity change */
+@keyframes arLightBreath {
+  0% {
+    opacity: .45;
+  }
+
+  100% {
+    opacity: .9;
+  }
+}
+
+/* Keep page content above the background */
+.ar-about > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile performance */
+@media (max-width: 650px) {
+  .ar-about::before {
+    inset: -20%;
+    filter: blur(45px);
+    animation-duration: 34s;
+  }
+
+  .ar-about::after {
+    animation-duration: 24s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ar-about::before,
+  .ar-about::after {
+    animation: none;
+  }
+}
+
+
+
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
 
 .ar-about-nav {
   min-height: 85px;
   display: flex;
   align-items: center;
   gap: 13px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
 .ar-about-brand {
   color: white;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -1.5px;
@@ -2943,7 +3173,6 @@ img {
 }
 
 .ar-brand-caption {
-  align-self: center;
   color: var(--ar-muted);
   font-size: 8px;
   letter-spacing: 1.2px;
@@ -2957,7 +3186,8 @@ img {
 }
 
 .ar-about-nav nav a {
-  color: #b5bdc7;
+  position: relative;
+  color: #aeb9c7;
   font-size: 11px;
   text-decoration: none;
   transition: color .3s ease;
@@ -2968,6 +3198,16 @@ img {
   color: white;
 }
 
+.ar-about-nav nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--ar-orange);
+}
+
 .ar-about-nav nav .ar-nav-contact {
   padding: 11px 17px;
   border: 1px solid rgba(255,255,255,.25);
@@ -2975,45 +3215,36 @@ img {
   color: white;
 }
 
-/* STAGE */
+.ar-about-nav nav .ar-nav-contact:hover {
+  background: var(--ar-orange);
+  border-color: var(--ar-orange);
+}
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
 
 .ar-about-stage {
   max-width: 1440px;
   margin: auto;
-  padding: 65px 0 25px;
+  padding: 78px 0 25px;
 }
 
 .ar-stage-heading {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 30px;
-}
-
-.ar-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--ar-orange);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.ar-label i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ar-orange);
+  gap: 35px;
 }
 
 .ar-stage-heading h1 {
-  margin: 22px 0 0;
-  font-family: var(--font-heading);
-  font-size: clamp(52px, 7vw, 94px);
+  margin: 0;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(58px, 8vw, 108px);
   font-weight: 700;
-  line-height: .92;
-  letter-spacing: -.075em;
+  line-height: .91;
+  letter-spacing: -.085em;
+  color: var(--ar-cream);
 }
 
 .ar-stage-heading h1 span {
@@ -3021,14 +3252,16 @@ img {
 }
 
 .ar-stage-heading > p {
-  max-width: 270px;
+  max-width: 285px;
   margin: 0 0 8px;
   color: var(--ar-muted);
   font-size: 12px;
   line-height: 1.9;
 }
 
-/* FLOATING PILLS */
+/* ==========================================
+   FLOATING SECTION NAVIGATION
+========================================== */
 
 .ar-floating-tabs {
   display: flex;
@@ -3036,18 +3269,19 @@ img {
   width: fit-content;
   max-width: 100%;
   gap: 5px;
-  margin: 38px auto 24px;
+  margin: 45px auto 27px;
   padding: 6px;
-  border: 1px solid rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: 40px;
-  background: #172333;
+  background: rgba(20,36,56,.75);
+  backdrop-filter: blur(15px);
 }
 
 .ar-floating-tabs a {
-  padding: 10px 17px;
+  padding: 11px 19px;
   border-radius: 30px;
-  color: #b6c0cb;
-  font-size: 9px;
+  color: #aeb9c7;
+  font-size: 10px;
   text-decoration: none;
   transition: .3s ease;
 }
@@ -3061,33 +3295,139 @@ img {
   color: white;
 }
 
-/* MODULAR GRID */
+/* ==========================================
+   DASHBOARD GRID
+========================================== */
 
 .ar-dashboard-grid {
   display: grid;
   grid-template-columns: 1.25fr .85fr .85fr;
   grid-template-rows: 260px 240px;
-  gap: 13px;
+  gap: 14px;
 }
 
 .ar-card {
   position: relative;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.09);
   border-radius: 17px;
   background: var(--ar-panel);
-  transition: border-color .35s ease, transform .35s ease;
+  opacity: 1;
+  transform: none;
+  transition:
+    border-color .4s ease,
+    transform .4s ease,
+    box-shadow .4s ease;
 }
 
 .ar-card:hover {
-  border-color: rgba(232,117,59,.5);
+  border-color: rgba(232,117,59,.55);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(0,0,0,.17);
 }
+
+
+/* ==========================================
+   SCROLL-TRIGGERED CARD ANIMATION
+========================================== */
+
+/* Initial state — hidden until the card enters view */
+.ar-dashboard-grid .ar-card {
+  opacity: 0;
+  transform: translate3d(0, 85px, 0) scale(.88);
+}
+
+/* Animation starts when JS adds this class */
+.ar-dashboard-grid .ar-card.ar-card-entering {
+  animation: arCardBounce 1.15s cubic-bezier(.2, .85, .25, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Staggered entrance */
+.ar-dashboard-grid .ar-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.ar-dashboard-grid .ar-card:nth-child(2) {
+  animation-delay: .12s;
+}
+
+.ar-dashboard-grid .ar-card:nth-child(3) {
+  animation-delay: .24s;
+}
+
+.ar-dashboard-grid .ar-card:nth-child(4) {
+  animation-delay: .36s;
+}
+
+.ar-dashboard-grid .ar-card:nth-child(5) {
+  animation-delay: .48s;
+}
+
+/* Bounce, overshoot, and settle */
+@keyframes arCardBounce {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0) scale(.82);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate3d(0, -15px, 0) scale(1.035);
+  }
+
+  72% {
+    transform: translate3d(0, 7px, 0) scale(.985);
+  }
+
+  87% {
+    transform: translate3d(0, -3px, 0) scale(1.008);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Final state — restores normal hover behaviour */
+.ar-dashboard-grid .ar-card.ar-card-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Mobile: smaller movement */
+@media (max-width: 650px) {
+  .ar-dashboard-grid .ar-card {
+    transform: translate3d(0, 55px, 0) scale(.94);
+  }
+
+  .ar-dashboard-grid .ar-card.ar-card-entering {
+    animation-duration: .9s;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ar-dashboard-grid .ar-card {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+    will-change: auto;
+  }
+}
+
+
+
+
+/* Main image */
 
 .ar-main-image {
   grid-row: span 2;
   min-height: 513px;
-  background: #1c2937;
+  background: #17283b;
 }
 
 .ar-main-image > img {
@@ -3106,19 +3446,16 @@ img {
 .ar-image-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(6,13,21,.45),
-    transparent 40%,
-    rgba(6,13,21,.82)
-  );
+  background:
+    linear-gradient(180deg, rgba(6,13,21,.25), transparent 35%),
+    linear-gradient(0deg, rgba(6,13,21,.9), transparent 65%);
 }
 
 .ar-image-top,
 .ar-image-bottom {
   position: absolute;
-  right: 22px;
-  left: 22px;
+  right: 23px;
+  left: 23px;
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -3126,24 +3463,24 @@ img {
 }
 
 .ar-image-top {
-  top: 20px;
+  top: 22px;
   color: white;
   font-size: 8px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.4px;
 }
 
 .ar-image-bottom {
-  bottom: 23px;
+  bottom: 25px;
 }
 
 .ar-image-bottom h2 {
   margin: 10px 0 0;
   color: white;
-  font-family: var(--font-heading);
-  font-size: clamp(35px, 4vw, 55px);
-  line-height: .98;
-  letter-spacing: -2px;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: .95;
+  letter-spacing: -2.5px;
 }
 
 .ar-image-bottom > div > span {
@@ -3155,16 +3492,23 @@ img {
 .ar-image-bottom > a {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255,255,255,.55);
+  width: 43px;
+  height: 43px;
+  border: 1px solid rgba(255,255,255,.6);
   border-radius: 50%;
   color: white;
   font-size: 18px;
   text-decoration: none;
+  transition: .3s ease;
 }
 
-/* COMMON CARD HEADING */
+.ar-image-bottom > a:hover {
+  background: var(--ar-orange);
+  border-color: var(--ar-orange);
+  transform: rotate(45deg);
+}
+
+/* Shared card heading */
 
 .ar-card-heading {
   position: relative;
@@ -3178,10 +3522,12 @@ img {
   letter-spacing: 1.3px;
 }
 
-/* COMPANY */
+/* ==========================================
+   COMPANY CARD
+========================================== */
 
 .ar-company-card {
-  padding: 21px;
+  padding: 22px;
   background: #f0eee9;
   color: var(--ar-bg);
 }
@@ -3202,7 +3548,7 @@ img {
   top: 25px;
   right: 17px;
   color: rgba(232,117,59,.14);
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 105px;
   font-weight: 800;
   line-height: 1;
@@ -3217,7 +3563,7 @@ img {
 
 .ar-company-copy h3 {
   margin: 0 0 12px;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 30px;
   font-weight: 700;
   line-height: .98;
@@ -3243,13 +3589,15 @@ img {
   text-decoration: none;
 }
 
-/* PURPOSE */
+/* ==========================================
+   PURPOSE CARD
+========================================== */
 
 .ar-purpose-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 21px;
+  padding: 22px;
   background: var(--ar-panel-light);
 }
 
@@ -3267,7 +3615,7 @@ img {
 
 .ar-purpose-content h3 {
   margin: 12px 0;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 34px;
   line-height: .98;
   letter-spacing: -1.8px;
@@ -3291,13 +3639,15 @@ img {
   letter-spacing: 1.5px;
 }
 
-/* APPROACH */
+/* ==========================================
+   APPROACH CARD
+========================================== */
 
 .ar-approach-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 21px;
+  padding: 22px;
   background: #e9e5dc;
   color: var(--ar-bg);
 }
@@ -3320,7 +3670,7 @@ img {
   position: relative;
   z-index: 2;
   color: var(--ar-orange);
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 38px;
   font-weight: 800;
 }
@@ -3341,11 +3691,28 @@ img {
   inset: 30px;
 }
 
+.ar-approach-art .ar-orbit {
+  animation: arOrbitRotate 18s linear infinite;
+}
+
+.ar-approach-art .orbit-two {
+  animation-direction: reverse;
+  animation-duration: 13s;
+}
+
+.ar-approach-art .orbit-three {
+  animation-duration: 23s;
+}
+
+@keyframes arOrbitRotate {
+  to { transform: rotate(360deg); }
+}
+
 .ar-approach-card h3 {
   position: relative;
   z-index: 2;
   margin: auto 0 8px;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, "Sora", sans-serif);
   font-size: 23px;
   line-height: 1.05;
   letter-spacing: -1px;
@@ -3357,11 +3724,13 @@ img {
   font-size: 9px;
 }
 
-/* VALUES */
+/* ==========================================
+   VALUES CARD
+========================================== */
 
 .ar-values-card {
   grid-column: 2 / 4;
-  padding: 21px;
+  padding: 22px;
   background: #17283b;
 }
 
@@ -3399,7 +3768,9 @@ img {
   font-size: 12px;
 }
 
-/* FOOTER STRIP */
+/* ==========================================
+   FOOTER STRIP
+========================================== */
 
 .ar-stage-footer {
   display: flex;
@@ -3412,7 +3783,9 @@ img {
   letter-spacing: 1.2px;
 }
 
-/* CLOSING */
+/* ==========================================
+   CLOSING SECTION
+========================================== */
 
 .ar-about-end {
   padding: 100px 0 110px;
@@ -3421,10 +3794,11 @@ img {
 
 .ar-about-end h2 {
   margin: 24px 0 30px;
-  font-family: var(--font-heading);
-  font-size: clamp(38px, 6vw, 75px);
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(42px, 6vw, 78px);
   line-height: 1;
   letter-spacing: -.065em;
+  color: var(--ar-cream);
 }
 
 .ar-about-end h2 span {
@@ -3449,7 +3823,9 @@ img {
   border-color: var(--ar-orange);
 }
 
-/* RESPONSIVE */
+/* ==========================================
+   TABLET
+========================================== */
 
 @media (max-width: 1000px) {
   .ar-dashboard-grid {
@@ -3470,9 +3846,18 @@ img {
   }
 }
 
+/* ==========================================
+   MOBILE
+========================================== */
+
 @media (max-width: 650px) {
   .ar-about {
     padding: 0 4%;
+  }
+
+  .ar-about::before {
+    filter: blur(45px);
+    animation-duration: 30s;
   }
 
   .ar-about-nav {
@@ -3496,7 +3881,7 @@ img {
   }
 
   .ar-about-stage {
-    padding-top: 45px;
+    padding-top: 50px;
   }
 
   .ar-stage-heading {
@@ -3549,7 +3934,16 @@ img {
   }
 }
 
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
 @media (prefers-reduced-motion: reduce) {
+  .ar-about::before,
+  .ar-approach-art .ar-orbit {
+    animation: none !important;
+  }
+
   .ar-card,
   .ar-main-image > img,
   .ar-values-list > div {
@@ -3559,57 +3953,24 @@ img {
 
 
 
-/* =================================
-   CARD TILT & SETTLE ANIMATION
-================================= */
 
-.ar-card {
+.ar-letter-heading .ar-line {
+  display: block;
+}
+
+.ar-letter-heading .ar-letter {
+  display: inline-block;
   opacity: 0;
-  transform: perspective(1000px) translateY(35px) rotate(-7deg) scale(.92);
-  transform-origin: center;
-  will-change: transform, opacity;
+  transform: translateY(20px);
+  transition:
+    opacity .35s ease,
+    transform .45s cubic-bezier(.2, .7, .2, 1);
 }
 
-.ar-card.ar-card-visible {
-  animation: arCardEnter .85s cubic-bezier(.2, .8, .25, 1) both;
+.ar-letter-heading.is-visible .ar-letter {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-.ar-card:nth-child(1) { --card-delay: 0s; }
-.ar-card:nth-child(2) { --card-delay: .08s; }
-.ar-card:nth-child(3) { --card-delay: .16s; }
-.ar-card:nth-child(4) { --card-delay: .24s; }
-.ar-card:nth-child(5) { --card-delay: .32s; }
-
-.ar-card.ar-card-visible {
-  animation-delay: var(--card-delay);
-}
-
-@keyframes arCardEnter {
-  0% {
-    opacity: 0;
-    transform: perspective(1000px) translateY(35px) rotate(-7deg) scale(.92);
-  }
-
-  45% {
-    opacity: 1;
-    transform: perspective(1000px) translateY(-5px) rotate(5deg) scale(1.02);
-  }
-
-  75% {
-    transform: perspective(1000px) translateY(2px) rotate(-2deg) scale(.99);
-  }
-
-  100% {
-    opacity: 1;
-    transform: perspective(1000px) translateY(0) rotate(0deg) scale(1);
-  }
-}
-
-
-
-
-
-
 
 
 
@@ -4234,7 +4595,7 @@ img {
 
 .process-step {
   position: relative;
-  padding-top: 20px;
+  padding:20px;
   border-top: 1px solid rgba(16,39,67,.2);
   opacity: 0;
   transform: translateY(18px);
@@ -4286,6 +4647,10 @@ img {
   font-size: 12px;
   line-height: 1.9;
 }
+
+
+
+
 
 
 /* =========================================
@@ -5030,3 +5395,38 @@ img {
     transform: none;
   }
 }
+
+
+
+
+/* PROCESS CARD — MOVING BLUE HIGHLIGHT */
+
+.service-process .process-step {
+  background: transparent;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.service-process .process-step.blue-blink {
+  background: #103f73;
+  border-color: #103f73;
+}
+
+.service-process .process-step.blue-blink .process-number,
+.service-process .process-step.blue-blink h3,
+.service-process .process-step.blue-blink p {
+  color: #ffffff;
+}
+
+.service-process .process-step.blue-blink .process-line {
+  background: #ffffff;
+}
+
+
+
+
+
+
+
+

@@ -1,3 +1,39 @@
+// navbar
+
+
+
+
+const navbar = document.querySelector(".arshana-navbar");
+
+if (navbar) {
+    const handleNavbarScroll = () => {
+        navbar.classList.toggle("is-scrolled", window.scrollY > 60);
+    };
+
+    window.addEventListener("scroll", handleNavbarScroll, {
+        passive: true
+    });
+
+    handleNavbarScroll();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // why choose us //
 
 
@@ -692,26 +728,116 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(
+    ".ar-dashboard-grid .ar-card"
+  );
+
+  // Show cards immediately if IntersectionObserver isn't supported
+  if (!("IntersectionObserver" in window)) {
+    cards.forEach(card => {
+      card.classList.add("ar-card-visible");
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+
+        card.classList.add("ar-card-entering");
+
+        // Remove animation after it finishes.
+        // This allows the normal hover transform to work.
+        card.addEventListener("animationend", () => {
+          card.classList.remove("ar-card-entering");
+          card.classList.add("ar-card-visible");
+        }, { once: true });
+
+        observer.unobserve(card);
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -35px 0px"
+    }
+  );
+
+  cards.forEach(card => observer.observe(card));
+});
 
 
 
 
-
-
-
-
-
-/////////////////////////////// services css ////////////////////////////////
 
 
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  const heading = document.querySelector(".ar-letter-heading");
+  if (!heading) return;
+
+  let index = 0;
+
+  heading.querySelectorAll(".ar-line").forEach(line => {
+    const text = line.textContent.trim();
+    line.textContent = "";
+
+    [...text].forEach(char => {
+      const letter = document.createElement("span");
+      letter.className = "ar-letter";
+      letter.textContent = char === " " ? "\u00A0" : char;
+      letter.style.transitionDelay = `${index * 0.045}s`;
+
+      line.appendChild(letter);
+      index++;
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        heading.classList.add("is-visible");
+        observer.unobserve(heading);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(heading);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////// services js ////////////////////////////////
+
+
+
+
+/////////////////////////////// SERVICES JS ////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", () => {
   const page = document.querySelector(".ar-services");
 
   if (!page) return;
 
+  // 1. Existing section reveal animations
   const revealElements = page.querySelectorAll(`
     .service-directory,
     .service-details,
@@ -739,6 +865,70 @@ document.addEventListener("DOMContentLoaded", () => {
     revealObserver.observe(element);
   });
 
+
+  // 2. PROCESS CARDS — CONTINUOUS BLUE HIGHLIGHT
+  const processSection = page.querySelector(".service-process");
+  const processCards = processSection
+    ? Array.from(processSection.querySelectorAll(".process-step"))
+    : [];
+
+  if (processSection && processCards.length === 4) {
+    // Sequence: 01 → 03 → 02 → 04
+    const sequence = [0, 2, 1, 3];
+
+    let currentIndex = 0;
+    let blinkInterval = null;
+
+    function showNextCard() {
+      processCards.forEach(card => {
+        card.classList.remove("blue-blink");
+      });
+
+      const activeCard = processCards[sequence[currentIndex]];
+      activeCard.classList.add("blue-blink");
+
+      currentIndex = (currentIndex + 1) % sequence.length;
+    }
+
+    function startBlink() {
+      if (blinkInterval) return;
+
+      showNextCard();
+
+      blinkInterval = setInterval(showNextCard, 1100);
+    }
+
+    function stopBlink() {
+      clearInterval(blinkInterval);
+      blinkInterval = null;
+
+      processCards.forEach(card => {
+        card.classList.remove("blue-blink");
+      });
+
+      currentIndex = 0;
+    }
+
+    const processObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startBlink();
+          } else {
+            stopBlink();
+          }
+        });
+      },
+      {
+        threshold: 0.25
+      }
+    );
+
+    processObserver.observe(processSection);
+  }
+
+
+  // 3. Smooth in-page navigation
   page.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
@@ -762,32 +952,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const revealElements = page.querySelectorAll(`
-  .service-directory,
-  .service-details,
-  .service-detail-card,
-  .service-process,
-  .service-cta
-`);
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      } else {
-        entry.target.classList.remove("is-visible");
-      }
-    });
-  },
-  {
-    threshold: 0.15
-  }
-);
-
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
 
 
 
