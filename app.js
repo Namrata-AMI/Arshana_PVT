@@ -31,6 +31,14 @@ app.get("/services",(req,res)=>{
     res.render("lists/service.ejs");
 })
 
+
+app.get("/projects",(req,res)=>{
+    res.render("lists/project.ejs");
+})
+
+
+
+
 app.listen(8080,()=>{
     console.log("server is listening to port 8080");
 });

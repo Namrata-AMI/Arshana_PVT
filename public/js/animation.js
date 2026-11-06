@@ -703,111 +703,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ARSHANA — TILTING CARD ENTRANCE */
+
+/* ==========================================
+   ARSHANA — ABOUT PAGE ANIMATIONS
+========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".ar-card");
+  const aboutPage = document.querySelector(".ar-about");
 
-  if (!cards.length) return;
+  // Do nothing on other pages
+  if (!aboutPage) return;
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  /* ------------------------------------------
+     1. CARD AND SECTION REVEAL
+  ------------------------------------------ */
 
-      entry.target.classList.add("ar-card-visible");
-      observer.unobserve(entry.target);
-    });
-  }, {
-    threshold: 0.12
-  });
-
-  cards.forEach((card) => observer.observe(card));
-});
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(
-    ".ar-dashboard-grid .ar-card"
+  const revealElements = aboutPage.querySelectorAll(
+    ".ar-stage-heading, .ar-floating-tabs, .ar-dashboard-grid .ar-card, .ar-stage-footer, .ar-about-end"
   );
 
-  // Show cards immediately if IntersectionObserver isn't supported
+  // Fallback for browsers without IntersectionObserver
   if (!("IntersectionObserver" in window)) {
-    cards.forEach(card => {
-      card.classList.add("ar-card-visible");
+    revealElements.forEach(element => {
+      element.classList.add("is-visible");
     });
-    return;
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+        if (entry.target.matches(".ar-dashboard-grid .ar-card")) {
+        entry.target.classList.add("ar-card-tilt-in");
+        } else {
+        entry.target.classList.add("is-visible");
+        }          
+        observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -30px 0px"
+      }
+    );
+
+    revealElements.forEach(element => {
+      element.classList.add("ar-reveal");
+      revealObserver.observe(element);
+    });
+
+    // Activate reveal CSS after observer setup
+    aboutPage.classList.add("ar-reveal-ready");
   }
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+  /* ------------------------------------------
+     2. CLOSING HEADING LETTER ANIMATION
+  ------------------------------------------ */
 
-        const card = entry.target;
+  const heading = aboutPage.querySelector(".ar-letter-heading");
 
-        card.classList.add("ar-card-entering");
-
-        // Remove animation after it finishes.
-        // This allows the normal hover transform to work.
-        card.addEventListener("animationend", () => {
-          card.classList.remove("ar-card-entering");
-          card.classList.add("ar-card-visible");
-        }, { once: true });
-
-        observer.unobserve(card);
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -35px 0px"
-    }
-  );
-
-  cards.forEach(card => observer.observe(card));
-});
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const heading = document.querySelector(".ar-letter-heading");
   if (!heading) return;
 
-  let index = 0;
+  let letterIndex = 0;
 
   heading.querySelectorAll(".ar-line").forEach(line => {
-    const text = line.textContent.trim();
+    const text = line.textContent;
     line.textContent = "";
 
     [...text].forEach(char => {
       const letter = document.createElement("span");
+
       letter.className = "ar-letter";
       letter.textContent = char === " " ? "\u00A0" : char;
-      letter.style.transitionDelay = `${index * 0.045}s`;
+      letter.style.transitionDelay = `${letterIndex * 0.025}s`;
 
       line.appendChild(letter);
-      index++;
+      letterIndex++;
     });
   });
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+  if (!("IntersectionObserver" in window)) {
+    heading.classList.add("is-visible");
+    return;
+  }
+
+  const headingObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
         heading.classList.add("is-visible");
         observer.unobserve(heading);
-      }
-    });
-  }, { threshold: 0.3 });
+      });
+    },
+    {
+      threshold: 0.25
+    }
+  );
 
-  observer.observe(heading);
+  headingObserver.observe(heading);
 });
 
 
@@ -962,6 +956,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+/////////////////////////////////project js//////////////////////////////////
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const page = document.querySelector(".ar-projects");
+  if (!page) return;
+
+  const revealItems = page.querySelectorAll(
+    ".projects-overview-left, .projects-overview-right, .projects-section-heading, .projects-featured-image, .projects-featured-info, .projects-category-card, .projects-cta > *"
+  );
+
+  const imageItems = page.querySelectorAll(
+    ".projects-hero-image, .projects-featured-image, .projects-category-card img"
+  );
+
+  revealItems.forEach((item, index) => {
+    item.classList.add("project-reveal");
+
+    if (item.classList.contains("projects-category-card")) {
+      item.style.setProperty("--reveal-delay", `${(index % 2) * 120}ms`);
+    }
+  });
+
+  imageItems.forEach(item => {
+    item.classList.add("project-image-reveal");
+  });
+
+  if (!("IntersectionObserver" in window)) {
+    page.querySelectorAll(".project-reveal, .project-image-reveal")
+      .forEach(item => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add("is-visible");
+      obs.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -35px 0px"
+  });
+
+  page.querySelectorAll(".project-reveal, .project-image-reveal")
+    .forEach(item => observer.observe(item));
+});
 
 
 
