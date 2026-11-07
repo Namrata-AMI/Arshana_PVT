@@ -1,0 +1,682 @@
+/******************************************************about css*************************************/
+
+
+
+
+
+
+/* ==========================================
+   ARSHANA — ABOUT PAGE
+   Clean editorial layout
+========================================== */
+
+.ar-about {
+  --ar-bg: #0b1420;
+  --ar-panel: #142438;
+  --ar-panel-light: #1a2d43;
+  --ar-orange: #e8753b;
+  --ar-cream: #f5f3ef;
+  --ar-muted: #a2acb8;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding: 0 5%;
+  overflow: hidden;
+  color: var(--ar-cream);
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(36, 91, 145, .18), transparent 45%),
+    radial-gradient(ellipse at 85% 75%, rgba(27, 67, 111, .16), transparent 45%),
+    var(--ar-bg);
+}
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.ar-about-stage {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  padding: 125px 0 55px;
+}
+
+.ar-stage-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 50px;
+  margin-bottom: 48px;
+}
+
+.ar-stage-heading h1 {
+  margin: 0;
+  color: var(--ar-cream);
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(55px, 7vw, 100px);
+  font-weight: 700;
+  line-height: .94;
+  letter-spacing: -.075em;
+}
+
+.ar-stage-heading h1 span {
+  color: var(--ar-orange);
+}
+
+.ar-stage-heading > p {
+  max-width: 300px;
+  margin: 0 0 12px;
+  color: var(--ar-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* ==========================================
+   DASHBOARD GRID
+========================================== */
+
+.ar-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .9fr .9fr;
+  grid-template-rows: 260px 260px;
+  gap: 18px;
+}
+
+.ar-card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 18px;
+  background: var(--ar-panel);
+  transform-origin: center;
+  backface-visibility: hidden;
+  transition: border-color .3s ease;
+}
+
+.ar-card:hover {
+  border-color: rgba(232,117,59,.5);
+}
+
+/* ==========================================
+   CARD ENTRANCE — LEFT / RIGHT BOUNCE
+========================================== */
+
+.ar-dashboard-grid .ar-card {
+  opacity: 1;
+  transform: none;
+}
+
+.ar-dashboard-grid .ar-card.ar-card-tilt-in {
+  animation-duration: .95s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.22,.8,.3,1);
+}
+
+.ar-dashboard-grid .ar-card:nth-child(odd).ar-card-tilt-in {
+  animation-name: cardBunnyLeft;
+}
+
+.ar-dashboard-grid .ar-card:nth-child(even).ar-card-tilt-in {
+  animation-name: cardBunnyRight;
+}
+
+@keyframes cardBunnyLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(65px) rotate(-11deg) scale(.82);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-12px) rotate(6deg) scale(1.035);
+  }
+  65% {
+    transform: translateY(5px) rotate(-3deg) scale(.985);
+  }
+  82% {
+    transform: translateY(-3px) rotate(1.5deg) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes cardBunnyRight {
+  0% {
+    opacity: 0;
+    transform: translateY(65px) rotate(11deg) scale(.82);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-12px) rotate(-6deg) scale(1.035);
+  }
+  65% {
+    transform: translateY(5px) rotate(3deg) scale(.985);
+  }
+  82% {
+    transform: translateY(-3px) rotate(-1.5deg) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+/* ==========================================
+   MAIN IMAGE CARD
+========================================== */
+
+.ar-main-image {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-height: 538px;
+  background: #17283b;
+}
+
+.ar-main-image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ar-image-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(6,13,21,.88),
+    transparent 70%
+  );
+}
+
+.ar-image-top,
+.ar-image-bottom {
+  position: absolute;
+  right: 22px;
+  left: 22px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ar-image-top {
+  top: 20px;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.ar-image-bottom {
+  bottom: 23px;
+}
+
+.ar-image-bottom h2 {
+  margin: 10px 0 0;
+  color: white;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: .95;
+  letter-spacing: -2px;
+}
+
+.ar-image-bottom > div > span {
+  color: #e6c2aa;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+
+.ar-image-bottom > a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: background .25s ease;
+}
+
+.ar-image-bottom > a:hover {
+  background: var(--ar-orange);
+  border-color: var(--ar-orange);
+}
+
+/* ==========================================
+   SHARED CARD HEADING
+========================================== */
+
+.ar-card-heading {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #b9c3ce;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.ar-card-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ar-orange);
+}
+
+/* ==========================================
+   COMPANY CARD
+========================================== */
+
+.ar-company-card {
+  padding: 25px;
+  background: #f0eee9;
+  color: var(--ar-bg);
+}
+
+.ar-company-card .ar-card-heading {
+  color: #697482;
+}
+
+.ar-company-symbol {
+  position: absolute;
+  top: 22px;
+  right: 17px;
+  color: rgba(232,117,59,.14);
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: 95px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ar-company-copy {
+  position: absolute;
+  right: 25px;
+  bottom: 24px;
+  left: 25px;
+}
+
+.ar-company-copy h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: -1.2px;
+}
+
+.ar-company-copy p {
+  margin: 0 0 12px;
+  color: #66717c;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.ar-company-copy a {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 9px;
+  border-top: 1px solid rgba(16,39,67,.2);
+  color: var(--ar-bg);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* ==========================================
+   PURPOSE CARD
+========================================== */
+
+.ar-purpose-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  background: var(--ar-panel-light);
+}
+
+.ar-purpose-card .ar-card-heading span:last-child {
+  color: var(--ar-orange);
+  font-size: 18px;
+}
+
+.ar-mini-label {
+  color: var(--ar-orange);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.ar-purpose-content h3 {
+  margin: 10px 0;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+.ar-purpose-content h3 span {
+  color: var(--ar-orange);
+}
+
+.ar-purpose-content p {
+  max-width: 220px;
+  margin: 0;
+  color: var(--ar-muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.ar-card-number {
+  color: #758293;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+
+/* ==========================================
+   APPROACH CARD
+========================================== */
+
+.ar-approach-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  background: #e9e5dc;
+  color: var(--ar-bg);
+}
+
+.ar-approach-card .ar-card-heading {
+  color: #66717c;
+}
+
+.ar-approach-art {
+  position: absolute;
+  top: 38px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 110px;
+  height: 110px;
+}
+
+.ar-approach-art > span {
+  position: relative;
+  z-index: 2;
+  color: var(--ar-orange);
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.ar-orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(16,39,67,.2);
+  border-radius: 50%;
+}
+
+.ar-orbit.orbit-two {
+  inset: 13px;
+  border-color: rgba(232,117,59,.5);
+}
+
+.ar-orbit.orbit-three {
+  inset: 26px;
+}
+
+.ar-approach-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: auto 0 7px;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.ar-approach-card p {
+  margin: 0;
+  color: #697482;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   VALUES CARD
+========================================== */
+
+.ar-values-card {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  padding: 25px;
+  background: #17283b;
+}
+
+.ar-values-list {
+  margin-top: 12px;
+}
+
+.ar-values-list > div {
+  display: grid;
+  grid-template-columns: 35px 1fr 20px;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.ar-values-list > div span {
+  color: var(--ar-orange);
+  font-size: 9px;
+}
+
+.ar-values-list strong {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ar-values-list b {
+  color: #9daab8;
+  font-size: 12px;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.ar-stage-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 18px;
+  padding: 25px 0 35px;
+  color: #8491a0;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   CLOSING SECTION
+========================================== */
+
+.ar-about-end {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 55vh;
+  margin: 35px auto 0;
+  padding: 105px 0 120px;
+  border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.ar-letter-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 28px;
+  font-family: var(--font-heading, "Sora", sans-serif);
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -.065em;
+}
+
+.ar-letter-heading .ar-line {
+  display: block;
+}
+
+.ar-letter-heading .ar-line-accent {
+  color: var(--ar-orange);
+}
+
+.ar-letter-heading .ar-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity .45s ease,
+    transform .45s cubic-bezier(.2, .7, .3, 1);
+}
+
+.ar-letter-heading.is-visible .ar-letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE — TABLET
+========================================== */
+
+@media (max-width: 1000px) {
+  .ar-about-stage {
+    padding-top: 110px;
+  }
+
+  .ar-dashboard-grid {
+    grid-template-columns: 1.1fr .9fr;
+    grid-template-rows: 280px 240px 240px;
+    gap: 15px;
+  }
+
+  .ar-main-image {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    min-height: 0;
+  }
+
+  .ar-values-card {
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE — MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+  .ar-about {
+    padding: 0 5%;
+  }
+
+  .ar-about-stage {
+    padding-top: 100px;
+    padding-bottom: 35px;
+  }
+
+  .ar-stage-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .ar-stage-heading h1 {
+    font-size: clamp(49px, 12vw, 70px);
+  }
+
+  .ar-stage-heading > p {
+    max-width: 320px;
+    font-size: 12px;
+  }
+
+  .ar-dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 13px;
+  }
+
+  .ar-main-image {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 380px;
+  }
+
+  .ar-company-card,
+  .ar-purpose-card,
+  .ar-approach-card,
+  .ar-values-card {
+    padding: 21px;
+  }
+
+  .ar-company-card {
+    min-height: 265px;
+  }
+
+  .ar-purpose-card,
+  .ar-approach-card {
+    min-height: 230px;
+  }
+
+  .ar-values-card {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 250px;
+  }
+
+  .ar-stage-footer {
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 20px 0 25px;
+  }
+
+  .ar-stage-footer span:nth-child(2) {
+    display: none;
+  }
+
+  .ar-about-end {
+    min-height: 45vh;
+    margin-top: 20px;
+    padding: 75px 0 90px;
+  }
+
+  .ar-letter-heading {
+    font-size: clamp(36px, 9vw, 52px);
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .ar-dashboard-grid .ar-card.ar-card-tilt-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ar-letter-heading .ar-letter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,138 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+
+<main class="ar-contact">
+
+  <!-- Full-screen video background -->
+  <section class="contact-hero">
+
+    <video
+      class="contact-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/assets/contact.png"
+    >
+      <source src="/assets/contact.mp4" type="video/mp4">
+    </video>
+
+    <div class="contact-overlay"></div>
+
+    <!-- Left content -->
+    <div class="contact-left">
+
+      <div class="contact-heading">
+        <h1>Let's<br>Build.</h1>
+      </div>
+
+      <div class="contact-details">
+
+        <div class="contact-detail-group">
+          <span class="contact-label">EMAIL</span>
+          <a href="mailto:info@arshanapvtltd.com">
+            [ INFO@ARSHANAPVTLTD.COM ]
+          </a>
+        </div>
+
+        <div class="contact-detail-group">
+          <span class="contact-label">PHONE</span>
+          <a href="tel:+919876543210">
+            [ +91 98765 43210 ]
+          </a>
+        </div>
+
+        <div class="contact-detail-group">
+          <span class="contact-label">OFFICE</span>
+          <p>Jaunpur, Uttar Pradesh, India</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right inquiry form -->
+    <div class="contact-form-wrapper">
+
+      <form action="/contact" method="POST" class="contact-form">
+
+        <input
+          type="text"
+          name="fullName"
+          placeholder="FULL NAME"
+          required
+        >
+
+        <input
+          type="email"
+          name="email"
+          placeholder="EMAIL ADDRESS"
+          required
+        >
+
+        <input
+          type="text"
+          name="companyName"
+          placeholder="COMPANY NAME"
+        >
+
+        <input
+          type="tel"
+          name="phone"
+          placeholder="PHONE NUMBER"
+          required
+        >
+
+        <select name="projectType" required>
+          <option value="" disabled selected>
+            WHAT ARE YOU LOOKING FOR?
+          </option>
+          <option value="Pipeline Construction">PIPELINE CONSTRUCTION</option>
+          <option value="Welding Services">WELDING SERVICES</option>
+          <option value="Hydrotesting">HYDROTESTING</option>
+          <option value="Infrastructure Projects">INFRASTRUCTURE PROJECTS</option>
+          <option value="Other">OTHER</option>
+        </select>
+
+        <textarea
+          name="message"
+          placeholder="TELL US ABOUT YOUR PROJECT"
+          rows="3"
+          required
+        ></textarea>
+
+        <select name="budget">
+          <option value="" disabled selected>
+            WHAT IS YOUR PROJECT SCALE?
+          </option>
+          <option value="Small">SMALL SCALE</option>
+          <option value="Medium">MEDIUM SCALE</option>
+          <option value="Large">LARGE SCALE</option>
+          <option value="Not decided">NOT DECIDED</option>
+        </select>
+
+        <select name="timeline">
+          <option value="" disabled selected>
+            WHEN ARE YOU LOOKING TO START?
+          </option>
+          <option value="Immediately">IMMEDIATELY</option>
+          <option value="Within 1 month">WITHIN 1 MONTH</option>
+          <option value="Within 3 months">WITHIN 3 MONTHS</option>
+          <option value="Planning stage">PLANNING STAGE</option>
+        </select>
+
+        <button type="submit" class="contact-submit">
+          SEND ENQUIRY <span>↗</span>
+        </button>
+
+      </form>
+    </div>
+
+    <div class="contact-bottom-note">
+      <span>ARSHANA PVT. LTD.</span>
+      <span>ENGINEERING · INFRASTRUCTURE · EXECUTION</span>
+    </div>
+
+  </section>
+
+</main>
+

@@ -1019,6 +1019,158 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+//////////////////////// gallery js ///////////////////////
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".gallery-horizontal-section");
+  const sticky = document.querySelector(".gallery-horizontal-sticky");
+  const track = document.querySelector(".gallery-track");
+  const scenes = gsap.utils.toArray(".gallery-scene");
+
+  if (!section || !sticky || !track || !scenes.length) return;
+  if (!window.gsap || !window.ScrollTrigger) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const desktopQuery = window.matchMedia("(min-width: 901px)");
+
+  let horizontalTween = null;
+  let sceneObserver = null;
+
+  function updateProgress(progress) {
+    const progressBar = document.querySelector(
+      ".gallery-progress-line span"
+    );
+
+    const counter = document.querySelector(
+      ".gallery-progress-count"
+    );
+
+    const total = scenes.length;
+
+    const current = Math.min(
+      total,
+      Math.floor(progress * total) + 1
+    );
+
+    if (progressBar) {
+      progressBar.style.width = `${progress * 100}%`;
+    }
+
+    if (counter) {
+      counter.textContent =
+        `${String(current).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+    }
+  }
+
+  function destroyGallery() {
+    if (horizontalTween) {
+      horizontalTween.scrollTrigger?.kill();
+      horizontalTween.kill();
+      horizontalTween = null;
+    }
+
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.id === "arshana-gallery") {
+        trigger.kill();
+      }
+    });
+
+    gsap.set(track, { clearProps: "transform" });
+    section.style.height = "";
+  }
+
+  function setupGallery() {
+    destroyGallery();
+
+    if (!desktopQuery.matches) {
+      scenes.forEach((scene, index) => {
+        scene.classList.toggle("is-active", index === 0);
+      });
+
+      updateProgress(0);
+      return;
+    }
+
+    const getDistance = () =>
+      Math.max(0, track.scrollWidth - sticky.clientWidth);
+
+    horizontalTween = gsap.to(track, {
+      x: () => -getDistance(),
+      ease: "none",
+
+      scrollTrigger: {
+        id: "arshana-gallery",
+        trigger: section,
+        start: "top top",
+        end: () => `+=${getDistance()}`,
+        pin: sticky,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+
+        onUpdate: self => {
+          updateProgress(self.progress);
+
+          const activeIndex = Math.min(
+            scenes.length - 1,
+            Math.floor(self.progress * scenes.length)
+          );
+
+          scenes.forEach((scene, index) => {
+            scene.classList.toggle(
+              "is-active",
+              index === activeIndex
+            );
+          });
+        }
+      }
+    });
+
+    ScrollTrigger.refresh();
+  }
+
+  // Wait for gallery images before calculating widths
+  const images = Array.from(track.querySelectorAll("img"));
+
+  const waitForImages = Promise.all(
+    images.map(img => {
+      if (img.complete) return Promise.resolve();
+
+      return new Promise(resolve => {
+        img.addEventListener("load", resolve, { once: true });
+        img.addEventListener("error", resolve, { once: true });
+      });
+    })
+  );
+
+  waitForImages.then(() => {
+    setupGallery();
+    ScrollTrigger.refresh();
+  });
+
+  // Recalculate when the browser is resized
+  let resizeTimer;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+      setupGallery();
+    }, 250);
+  });
+
+  // Desktop / mobile breakpoint changes
+  desktopQuery.addEventListener("change", setupGallery);
+
+  // Recalculate after all page assets finish loading
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
+});
 
 
 
@@ -1029,7 +1181,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// foooter css //////////////////////
+
+
+
+
+
+
+
+//////////////////////////////// blogs js ////////////////////////////////
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const revealItems = document.querySelectorAll(
+    ".blogs-section-heading, .blogs-featured, .blogs-listing-heading, .blog-card, .blogs-newsletter"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+
+  revealItems.forEach((item) => {
+    item.classList.add("reveal-up");
+    observer.observe(item);
+  });
+});
+
+
+const blogCards = document.querySelectorAll(".blog-card");
+
+const blogObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+blogCards.forEach((card) => {
+  blogObserver.observe(card);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// foooter js //////////////////////
 
 const footerYear = document.getElementById("footer-current-year");
 

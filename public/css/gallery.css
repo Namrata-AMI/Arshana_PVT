@@ -1,0 +1,771 @@
+
+/******************************************* gallery css ******************/
+
+
+
+
+
+/* =====================================================
+   ARSHANA PVT. LTD. — GALLERY
+   Brand: Navy Blue / Steel Blue / Orange / White
+===================================================== */
+
+.ar-gallery {
+  --navy: #19375b;
+  --deep-navy: #102743;
+  --mid-blue: #28517c;
+  --steel-blue: #547493;
+  --light-blue: #dce7f0;
+  --pale-blue: #edf3f8;
+  --orange: #e8753b;
+  --orange-light: #f6a16f;
+  --white: #ffffff;
+  --off-white: #f4f6f8;
+  --dark: #0d1b2a;
+  
+
+  width: 100%;
+  overflow: clip;
+  color: var(--white);
+  background: var(--deep-navy);
+  font-family: "Manrope", sans-serif;
+}
+
+.ar-gallery,
+.ar-gallery * {
+  box-sizing: border-box;
+}
+
+.ar-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ar-gallery a {
+  text-decoration: none;
+}
+
+
+/* =====================================================
+   01 — INTRO SECTION
+===================================================== */
+
+.gallery-intro {
+  position: relative;
+  min-height: 88vh;
+  padding: 145px 7% 45px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: var(--deep-navy);
+
+background: linear-gradient(
+  110deg,
+  #F4F8FC 0%,
+  #DCEAF5 35%,
+  #A9C5DF 60%,
+  #547493 80%,
+  #19375B 100%
+);
+}
+
+.gallery-intro-top,
+.gallery-intro-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.gallery-intro-top {
+  color: var(--navy);
+}
+
+.gallery-intro-bottom {
+  color: var(--steel-blue);
+}
+
+.gallery-intro-content {
+  margin: 70px 0;
+}
+
+.gallery-eyebrow {
+  display: block;
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+.gallery-intro-content h1 {
+  margin: 28px 0;
+
+  color: #102743;
+
+  font-size: clamp(65px, 10vw, 135px);
+  line-height: .9;
+  font-weight: 600;
+  letter-spacing: -.085em;
+}
+
+.gallery-intro-content h1 span {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.gallery-intro-content p {
+  max-width: 440px;
+  margin: 35px 0 0;
+
+  color: #244D76;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* =====================================================
+   02 — HORIZONTAL GALLERY SECTION
+===================================================== */
+
+.gallery-horizontal-section {
+  position: relative;
+  width: 100%;
+  background: var(--deep-navy);
+}
+
+.gallery-horizontal-sticky {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 650px;
+
+  padding: 85px 0 55px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    110deg,
+    #DCEAF5 0%,
+    #A9C5DF 25%,
+    #6F96BA 50%,
+    #3E6D99 72%,
+    #19375B 100%
+  );
+}
+
+.gallery-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  width: max-content;
+  height: 100%;
+
+  gap: 0;
+
+  will-change: transform;
+}
+
+
+/* =====================================================
+   03 — INDIVIDUAL GALLERY SCENES
+===================================================== */
+
+.gallery-scene {
+  position: relative;
+
+  flex: 0 0 100vw;
+  width: 100vw;
+
+  height: calc(100svh - 140px);
+  min-height: 500px;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #6F96BA, #244D76, #102743);
+}
+
+
+/* =====================================================
+   04 — ASYMMETRICAL IMAGE COMPOSITION
+===================================================== */
+
+.scene-image {
+  position: absolute;
+  overflow: hidden;
+  background: var(--mid-blue);
+}
+
+.scene-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transform: scale(1);
+  transition: transform .7s ease;
+}
+
+.gallery-scene.is-active .scene-image img {
+  transform: scale(1.015);
+}
+
+.scene-image-left {
+  top: 0;
+  left: 0;
+
+  width: 37%;
+  height: 100%;
+}
+
+.scene-image-center {
+  top: 0;
+  left: 37%;
+
+  width: 38.5%;
+  height: 66%;
+}
+
+.scene-image-right {
+  top: 0;
+  right: 0;
+
+  width: 24.5%;
+  height: 100%;
+}
+
+
+/* Blue-toned image overlays */
+
+.scene-image-left::after,
+.scene-image-center::after,
+.scene-image-right::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    0deg,
+    rgba(9, 25, 43, .32),
+    rgba(16, 39, 67, .04) 60%
+  );
+}
+
+
+/* =====================================================
+   05 — FLOATING GLASS INFORMATION CARD
+===================================================== */
+
+.gallery-floating-card {
+  position: absolute;
+  z-index: 3;
+  left: 30%;
+  bottom: 3%;
+  width: min(600px, 47%);
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 34px;
+
+  /* Lighter blur for better performance */
+  background: rgba(220, 231, 240, .94);
+  color: var(--deep-navy);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 15px 45px rgba(3, 18, 35, .2);
+}
+
+
+/* Card top */
+
+.floating-card-top {
+  min-height: 50px;
+
+  padding: 0 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.floating-brand {
+  color: var(--navy);
+
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -.06em;
+}
+
+.floating-brand span {
+  font-size: 9px;
+  vertical-align: top;
+}
+
+.floating-tag {
+  padding: 12px 25px;
+
+  border-radius: 40px;
+
+  background: var(--navy);
+  color: var(--white);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+
+/* Card content */
+
+.floating-card-content {
+  padding: 25px 30px 22px;
+
+  border-radius: 27px;
+
+  background: linear-gradient(135deg, #3E6D99, #244D76, #102743);
+
+  color: var(--white);
+}
+
+.floating-number {
+  color: var(--orange-light);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.floating-card-content h2 {
+  margin: 20px 0 15px;
+
+  color: var(--white);
+
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.065em;
+}
+
+.floating-card-content p {
+  max-width: 410px;
+  margin: 0;
+
+  color: rgba(255, 255, 255, .76);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+
+/* Card bottom */
+
+.floating-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+  margin-top: 24px;
+}
+
+.floating-card-bottom > span:first-child {
+  padding: 12px 23px;
+
+  border-radius: 40px;
+
+  background: rgba(255, 255, 255, .13);
+  color: var(--white);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.floating-explore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 20px;
+
+  border-radius: 40px;
+
+  background: var(--orange);
+  color: var(--white);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.floating-explore:hover {
+  background: #f28b54;
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   06 — GALLERY PROGRESS
+===================================================== */
+
+.gallery-progress {
+  position: absolute;
+  z-index: 5;
+
+  right: 5%;
+  bottom: 17px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  color: var(--white);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.gallery-progress-count {
+  white-space: nowrap;
+}
+
+.gallery-progress-line {
+  width: 100px;
+  height: 2px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, .25);
+}
+
+.gallery-progress-line span {
+  display: block;
+
+  width: 0;
+  height: 100%;
+
+  background: var(--orange);
+}
+
+
+/* =====================================================
+   07 — END SECTION
+===================================================== */
+
+.gallery-end {
+  min-height: 85vh;
+
+  padding: 120px 7%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(84, 116, 147, .17),
+      transparent 38%
+    ),
+    var(--off-white);
+
+  color: var(--deep-navy);
+}
+
+.gallery-end h2 {
+  margin: 30px 0;
+
+  color: var(--deep-navy);
+
+  font-size: clamp(65px, 9vw, 120px);
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: -.085em;
+}
+
+.gallery-end h2 span {
+  color: var(--steel-blue);
+
+  font-weight: 400;
+  font-style: italic;
+}
+
+.gallery-end p {
+  max-width: 420px;
+
+  color: #596d80;
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.gallery-contact-link {
+  margin-top: 25px;
+
+  padding: 16px 22px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 35px;
+
+  border-radius: 40px;
+
+  background: var(--navy);
+  color: var(--white);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.gallery-contact-link span {
+  color: var(--orange);
+  font-size: 17px;
+}
+
+.gallery-contact-link:hover {
+  background: var(--orange);
+  color: var(--white);
+
+  transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   08 — TABLET RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .gallery-intro {
+    min-height: 75vh;
+    padding: 125px 6% 35px;
+  }
+
+  .gallery-horizontal-sticky {
+    height: auto;
+    min-height: 0;
+
+    padding: 25px 5%;
+
+    overflow: visible;
+  }
+
+  .gallery-track {
+    width: 100%;
+    height: auto;
+
+    flex-direction: column;
+
+    transform: none !important;
+  }
+
+  .gallery-scene {
+    width: 100%;
+    height: 75svh;
+
+    min-height: 550px;
+
+    flex: 0 0 auto;
+
+    margin-bottom: 22px;
+
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .scene-image-left {
+    width: 42%;
+  }
+
+  .scene-image-center {
+    left: 42%;
+    width: 58%;
+    height: 55%;
+  }
+
+  .scene-image-right {
+    display: none;
+  }
+
+  .gallery-floating-card {
+    left: 8%;
+    bottom: 5%;
+
+    width: 84%;
+  }
+
+  .gallery-progress {
+    display: none;
+  }
+
+  .gallery-end {
+    min-height: 70vh;
+  }
+}
+
+
+/* =====================================================
+   09 — MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .gallery-intro {
+    min-height: 80svh;
+    padding: 115px 6% 30px;
+  }
+
+  .gallery-intro-top,
+  .gallery-intro-bottom {
+    font-size: 7px;
+  }
+
+  .gallery-intro-content {
+    margin: 50px 0;
+  }
+
+  .gallery-intro-content h1 {
+    font-size: 16vw;
+  }
+
+  .gallery-intro-content p {
+    font-size: 12px;
+  }
+
+  .gallery-scene {
+    height: 70svh;
+    min-height: 470px;
+
+    border-radius: 16px;
+  }
+
+  .scene-image-left {
+    width: 100%;
+    height: 100%;
+  }
+
+  .scene-image-center,
+  .scene-image-right {
+    display: none;
+  }
+
+  .gallery-floating-card {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    width: auto;
+
+    padding: 8px;
+
+    border-radius: 23px;
+  }
+
+  .floating-card-top {
+    min-height: 42px;
+    padding: 0 10px;
+  }
+
+  .floating-brand {
+    font-size: 19px;
+  }
+
+  .floating-tag {
+    padding: 10px 13px;
+    font-size: 7px;
+  }
+
+  .floating-card-content {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .floating-card-content h2 {
+    font-size: 36px;
+  }
+
+  .floating-card-content p {
+    font-size: 11px;
+  }
+
+  .floating-card-bottom {
+    margin-top: 18px;
+  }
+
+  .floating-explore {
+    font-size: 7px;
+    padding: 12px;
+  }
+
+  .gallery-end {
+    min-height: 70svh;
+    padding: 80px 6%;
+  }
+
+  .gallery-end h2 {
+    font-size: 16vw;
+  }
+}
+
+
+/* =====================================================
+   10 — ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ar-gallery *,
+  .ar-gallery *::before,
+  .ar-gallery *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
