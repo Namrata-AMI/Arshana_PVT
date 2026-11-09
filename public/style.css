@@ -3612,9 +3612,65 @@ img {
 
 /********why to choose us************/
 
+
 .arshana-expertise-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 85px 0;
-  background: #fff;
+  background: linear-gradient(
+    125deg,
+    #e8eef6 0%,
+    #f7f9fc 35%,
+    #edf2f8 70%,
+    #e4edf6 100%
+  );
+}
+
+.arshana-expertise-section::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  background:
+    radial-gradient(
+      circle at 25% 35%,
+      rgba(59, 148, 232, 0.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 75% 65%,
+      rgba(60, 115, 184, 0.15),
+      transparent 30%
+    );
+  animation: expertiseGradient 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes expertiseGradient {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+.arshana-expertise-card {
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arshana-expertise-section::before {
+    animation: none;
+  }
+}
+
+.arshana-expertise-card {
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(8px);
 }
 
 .arshana-expertise-container {
@@ -3753,8 +3809,6 @@ img {
 }
 
 
-
-/* Scroll reveal */
 .arshana-expertise-heading,
 .arshana-expertise-card {
   opacity: 0;
