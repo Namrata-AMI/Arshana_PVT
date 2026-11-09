@@ -1267,6 +1267,8 @@ img {
     align-items: center;
     gap: 18px;
     min-height: 400px;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
 }
 
 /* CENTRAL IMAGE */
@@ -2416,22 +2418,8 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================
-   ARSHANA — PREMIUM FOOTER
-   Unique footer styles
+ footer 
 ========================================== */
 
 .arshana-footer {
@@ -2998,7 +2986,872 @@ img {
 
 
 
+/* =========================================
+   ARSHANA — ABOUT HERO SECTION
+========================================= */
+
+.arshana-about-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 75px 0 65px;
+  background: #eaf2fb;
+}
+
+/* Building image background */
+.arshana-about-section::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -2;
+
+  background-image: url("/assets/about1.png");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  filter: blur(3px);
+  transform: scale(1.02);
+}
+
+/* Subtle overlay — keep building visible */
+.arshana-about-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    90deg,
+    rgba(244, 248, 253, 0.94) 0%,
+    rgba(240, 247, 253, 0.78) 38%,
+    rgba(231, 243, 253, 0.38) 72%,
+    rgba(225, 240, 253, 0.20) 100%
+  );
+}
+
+/* Main container */
+.arshana-about-container {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 50px));
+  margin: 0 auto;
+}
+
+/* Text area */
+.arshana-about-content {
+  max-width: 850px;
+}
+
+/* Eyebrow */
+.arshana-about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+
+  color: var(--arshana-orange);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+
+  margin-bottom: 16px;
+}
+
+.arshana-about-eyebrow::after {
+  content: "";
+  width: 48px;
+  height: 2px;
+  background: var(--arshana-orange);
+}
+
+/* Main heading */
+.arshana-about-content h1 {
+  max-width: 850px;
+
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -2px;
+
+  margin: 0 0 25px;
+}
+
+.arshana-about-content h1 span {
+  color: var(--arshana-orange);
+}
+
+/* Highlight box */
+.arshana-about-highlight {
+  max-width: 750px;
+
+  padding: 17px 22px;
+  margin-bottom: 23px;
+
+  background: rgba(255, 255, 255, 0.82);
+  border-left: 4px solid var(--arshana-orange);
+  border-radius: 4px 12px 12px 4px;
+
+  color: var(--arshana-navy);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
+
+  box-shadow: 0 8px 28px rgba(25, 55, 91, 0.05);
+}
+
+/* Body paragraphs */
+.arshana-about-content p {
+  max-width: 780px;
+
+  color: #536b83;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+
+  margin: 0 0 15px;
+}
+
+/* Discover button */
+.arshana-about-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  margin-top: 12px;
+  padding: 6px 7px 6px 22px;
+
+  background: var(--arshana-navy);
+  color: #fff;
+
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.arshana-about-link span {
+  display: grid;
+  place-items: center;
+
+  width: 39px;
+  height: 39px;
+
+  background: var(--arshana-orange);
+  color: #fff;
+
+  border-radius: 50%;
+  font-size: 22px;
+
+  transition: transform 0.3s ease;
+}
+
+.arshana-about-link:hover {
+  background: var(--arshana-orange);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.arshana-about-link:hover span {
+  transform: translateX(3px);
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+  .arshana-about-section {
+    padding: 65px 0 55px;
+  }
+
+  .arshana-about-container {
+    width: calc(100% - 40px);
+  }
+
+  .arshana-about-content {
+    max-width: 100%;
+  }
+
+  .arshana-about-section::before {
+    background-position: 65% center;
+    filter: blur(4px);
+  }
+
+  .arshana-about-section::after {
+    background: rgba(242, 247, 253, 0.78);
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 550px) {
+  .arshana-about-section {
+    padding: 55px 0 45px;
+  }
+
+  .arshana-about-container {
+    width: calc(100% - 34px);
+  }
+
+  .arshana-about-section::before {
+    background-position: 65% center;
+    filter: blur(5px);
+  }
+
+  .arshana-about-section::after {
+    background: rgba(244, 248, 253, 0.88);
+  }
+
+  .arshana-about-eyebrow {
+    font-size: 11px;
+    margin-bottom: 13px;
+  }
+
+  .arshana-about-content h1 {
+    font-size: 35px;
+    line-height: 1.17;
+    letter-spacing: -1.3px;
+    margin-bottom: 19px;
+  }
+
+  .arshana-about-highlight {
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+  .arshana-about-content p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .arshana-about-link {
+    margin-top: 8px;
+  }
+}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ARSHANA — PROJECTS SECTION
+========================================= */
+
+.arshana-projects-section {
+  padding: 85px 0 70px;
+  background: #f5f8fc;
+}
+
+.arshana-projects-container {
+  width: min(1120px, calc(100% - 50px));
+  margin: auto;
+}
+
+/* Section heading */
+.arshana-projects-heading {
+  max-width: 650px;
+  margin-bottom: 38px;
+}
+
+.arshana-projects-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--arshana-orange);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 13px;
+}
+
+.arshana-projects-eyebrow::after {
+  content: "";
+  width: 38px;
+  height: 2px;
+  background: var(--arshana-orange);
+}
+
+.arshana-projects-heading h2 {
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.16;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.arshana-projects-heading h2 span {
+  color: var(--arshana-orange);
+}
+
+.arshana-projects-heading p {
+  color: var(--arshana-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Project grid */
+.arshana-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Project card */
+.arshana-project-card {
+  display: block;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid rgba(25, 55, 91, 0.08);
+  border-radius: 13px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.arshana-project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 40px rgba(25, 55, 91, 0.12);
+}
+
+.arshana-project-image {
+  position: relative;
+  height: 225px;
+  overflow: hidden;
+  background: #dce6f0;
+}
+
+.arshana-project-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.arshana-project-card:hover .arshana-project-image img {
+  transform: scale(1.07);
+}
+
+.arshana-project-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 31, 54, 0.05),
+    rgba(10, 31, 54, 0.30)
+  );
+  pointer-events: none;
+}
+
+/* Number */
+.arshana-project-number {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: 15px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Arrow */
+.arshana-project-arrow {
+  position: absolute;
+  z-index: 1;
+  right: 15px;
+  bottom: 15px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--arshana-orange);
+  color: #fff;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.arshana-project-card:hover .arshana-project-arrow {
+  transform: rotate(45deg);
+}
+
+/* Card text */
+.arshana-project-info {
+  padding: 21px 20px 23px;
+}
+
+.arshana-project-category {
+  color: var(--arshana-orange);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.arshana-project-info h3 {
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: 18px;
+  font-weight: 650;
+  margin: 9px 0 9px;
+}
+
+.arshana-project-info p {
+  color: var(--arshana-muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Bottom row */
+.arshana-projects-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--arshana-border);
+}
+
+.arshana-projects-footer > span {
+  color: var(--arshana-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.arshana-projects-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--arshana-navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.arshana-projects-view span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--arshana-orange);
+  color: white;
+  font-size: 19px;
+}
+
+.arshana-projects-view:hover {
+  color: var(--arshana-orange);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+  .arshana-projects-section {
+    padding: 65px 0 55px;
+  }
+
+  .arshana-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .arshana-project-image {
+    height: 210px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+  .arshana-projects-section {
+    padding: 48px 0;
+  }
+
+  .arshana-projects-container {
+    width: calc(100% - 32px);
+  }
+
+  .arshana-projects-heading {
+    margin-bottom: 25px;
+  }
+
+  .arshana-projects-heading h2 {
+    font-size: 31px;
+    letter-spacing: -1px;
+  }
+
+  .arshana-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .arshana-project-image {
+    height: 220px;
+  }
+
+  .arshana-project-info {
+    padding: 18px;
+  }
+
+  .arshana-projects-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* Modern floating project cards */
+.arshana-project-card {
+  position: relative;
+  animation: modernFloat 3.5s ease-in-out infinite;
+  will-change: transform;
+  transition: box-shadow 0.4s ease;
+}
+
+.arshana-project-card:nth-child(2) {
+  animation-delay: -1.2s;
+}
+
+.arshana-project-card:nth-child(3) {
+  animation-delay: -2.4s;
+}
+
+@keyframes modernFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -13px, 0);
+  }
+}
+
+/* Premium hover depth */
+.arshana-project-card:hover {
+  animation-play-state: paused;
+  box-shadow: 0 24px 45px rgba(16, 39, 67, 0.16);
+}
+
+/* Smooth image movement */
+.arshana-project-image img {
+  transition: transform 0.8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.arshana-project-card:hover .arshana-project-image img {
+  transform: scale(1.07);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .arshana-project-card {
+    animation: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********why to choose us************/
+
+.arshana-expertise-section {
+  padding: 85px 0;
+  background: #fff;
+}
+
+.arshana-expertise-container {
+  width: min(1120px, calc(100% - 50px));
+  margin: auto;
+}
+
+.arshana-expertise-heading {
+  max-width: 650px;
+  margin-bottom: 42px;
+}
+
+.arshana-expertise-eyebrow {
+  color: var(--arshana-orange);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.arshana-expertise-heading h2 {
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(32px, 4vw, 45px);
+  line-height: 1.2;
+  margin: 14px 0;
+}
+
+.arshana-expertise-heading h2 span {
+  color: var(--arshana-orange);
+}
+
+.arshana-expertise-heading p {
+  color: var(--arshana-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.arshana-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--arshana-border);
+  border-left: 1px solid var(--arshana-border);
+}
+
+.arshana-expertise-card {
+  position: relative;
+  min-height: 260px;
+  padding: 28px 23px;
+  background: #fff;
+  border-right: 1px solid var(--arshana-border);
+  border-bottom: 1px solid var(--arshana-border);
+  overflow: hidden;
+  transition: background .4s ease, transform .4s ease;
+}
+
+.arshana-expertise-card:hover {
+  background: #f5f8fc;
+  transform: translateY(-5px);
+}
+
+.arshana-expertise-number {
+  color: #aab8c7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.arshana-expertise-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 27px 0 22px;
+  border-radius: 12px;
+  background: rgba(232, 117, 59, .10);
+  color: var(--arshana-orange);
+  font-size: 27px;
+  transition: background .3s ease, color .3s ease;
+}
+
+.arshana-expertise-card:hover .arshana-expertise-icon {
+  background: var(--arshana-orange);
+  color: #fff;
+}
+
+.arshana-expertise-card h3 {
+  color: var(--arshana-navy);
+  font-family: "Sora", sans-serif;
+  font-size: 16px;
+  margin-bottom: 11px;
+}
+
+.arshana-expertise-card p {
+  color: var(--arshana-muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.arshana-expertise-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--arshana-orange);
+  transition: width .4s ease;
+}
+
+.arshana-expertise-card:hover .arshana-expertise-line {
+  width: 100%;
+}
+
+@media(max-width: 900px) {
+  .arshana-expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 550px) {
+  .arshana-expertise-section {
+    padding: 55px 0;
+  }
+
+  .arshana-expertise-container {
+    width: calc(100% - 32px);
+  }
+
+  .arshana-expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arshana-expertise-card {
+    min-height: 220px;
+  }
+}
+
+
+
+/* Scroll reveal */
+.arshana-expertise-heading,
+.arshana-expertise-card {
+  opacity: 0;
+  transform: translateY(35px);
+  animation: expertiseReveal 0.8s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+/* Heading entrance */
+.arshana-expertise-heading {
+  animation-delay: 0.1s;
+}
+
+/* Staggered card entrance */
+.arshana-expertise-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.arshana-expertise-card:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.arshana-expertise-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.arshana-expertise-card:nth-child(4) {
+  animation-delay: 0.65s;
+}
+
+@keyframes expertiseReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated icon */
+.arshana-expertise-icon {
+  position: relative;
+  overflow: hidden;
+  transition: transform .45s ease, background .35s ease, color .35s ease;
+}
+
+.arshana-expertise-icon::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255,255,255,.65) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%) rotate(20deg);
+  transition: transform .7s ease;
+}
+
+.arshana-expertise-card:hover .arshana-expertise-icon {
+  transform: translateY(-5px) scale(1.08);
+}
+
+.arshana-expertise-card:hover .arshana-expertise-icon::after {
+  transform: translateX(100%) rotate(20deg);
+}
+
+/* Card interaction */
+.arshana-expertise-card {
+  transition:
+    background .4s ease,
+    box-shadow .4s ease,
+    transform .4s ease;
+}
+
+.arshana-expertise-card:hover {
+  background: #f7f9fc;
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(16,39,67,.09);
+  z-index: 2;
+}
+
+/* Animated number */
+.arshana-expertise-number {
+  display: inline-block;
+  transition: transform .35s ease, color .35s ease;
+}
+
+.arshana-expertise-card:hover .arshana-expertise-number {
+  color: var(--arshana-orange);
+  transform: translateX(5px);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .arshana-expertise-heading,
+  .arshana-expertise-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

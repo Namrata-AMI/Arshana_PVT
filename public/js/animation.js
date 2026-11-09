@@ -49,20 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!image || !cards.length) return;
 
-    // Reveal central image first
     gsap.set(image, {
         autoAlpha: 0,
         scale: 0.82,
-        y: 35,
-        filter: "blur(12px)"
+        y: 25,
+        filter: "blur(8px)"
     });
 
-    // Cards begin at the bottom-centre
     cards.forEach((card, index) => {
         const total = cards.length;
         const angle = Math.PI - (index / (total - 1)) * Math.PI;
-
-        const radius = 230;
+        const radius = 200;
 
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
@@ -71,35 +68,32 @@ document.addEventListener("DOMContentLoaded", () => {
             autoAlpha: 0,
             x: -x,
             y: radius,
-            scale: 0.65,
-            rotation: (index - (total - 1) / 2) * 5,
-            filter: "blur(10px)",
+            scale: 0.75,
+            rotation: (index - (total - 1) / 2) * 4,
+            filter: "blur(6px)",
             transformOrigin: "center center"
         });
-
-        card.dataset.arcX = x;
-        card.dataset.arcY = y;
     });
 
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: "top 65%",
+            start: "top 70%",
             once: true
         }
     });
 
-    // Image entrance
+    // Faster image reveal
     tl.to(image, {
         autoAlpha: 1,
         scale: 1,
         y: 0,
         filter: "blur(0px)",
-        duration: 1.3,
+        duration: 0.85,
         ease: "power3.out"
     });
 
-    // Cards spread outward in sequence
+    // Faster card entrance
     cards.forEach((card, index) => {
         tl.to(card, {
             autoAlpha: 1,
@@ -108,9 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
             scale: 1,
             rotation: 0,
             filter: "blur(0px)",
-            duration: 0.9,
-            ease: "back.out(1.4)"
-        }, `-=${index === 0 ? 0 : 0.62}`);
+            duration: 0.6,
+            ease: "back.out(1.5)"
+        }, `-=${index === 0 ? 0 : 0.42}`);
     });
 });
 
