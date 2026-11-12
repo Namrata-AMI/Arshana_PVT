@@ -129,7 +129,7 @@
   margin-top: 25px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(25,55,91,.35);
-  color: var(--navy);
+  color: white;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -776,6 +776,269 @@
 
 
 
+
+
+
+
+
+
+
+/* =========================================
+   RESPONSIVE FIX — PROJECTS PAGE
+   Keeps existing colors and animations
+========================================= */
+
+/* TABLET */
+@media (max-width: 900px) {
+
+  .projects-hero {
+    min-height: auto;
+    padding: 110px 6% 30px;
+    gap: 55px;
+  }
+
+  .projects-hero-content {
+    max-width: 100%;
+    margin-top: 35px;
+  }
+
+  .projects-hero h1 {
+    font-size: clamp(64px, 9vw, 90px);
+    line-height: .9;
+  }
+
+  .projects-hero-image {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 90%;
+    height: 430px;
+    margin: 0 0 0 auto;
+  }
+
+  .projects-hero-footer {
+    margin-top: 20px;
+  }
+
+  .projects-overview {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 90px 7%;
+  }
+
+  .projects-category-card img {
+    height: 300px;
+  }
+
+  .projects-category-card:nth-child(even) {
+    margin-top: 65px;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .projects-hero {
+    min-height: auto;
+    padding: 100px 6% 28px;
+    gap: 35px;
+  }
+
+  .projects-hero-top {
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 8px;
+    letter-spacing: 1px;
+    gap: 10px;
+  }
+
+  .projects-hero-top span:last-child {
+    text-align: right;
+  }
+
+  .projects-hero-content {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 25px;
+  }
+
+  .projects-hero h1 {
+    font-size: clamp(48px, 12vw, 68px);
+    line-height: .92;
+    letter-spacing: -.065em;
+    margin: 22px 0 20px;
+    overflow: visible;
+  }
+
+  .projects-hero h1 br {
+    display: block;
+  }
+
+  .projects-hero-content > p {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .projects-hero-link {
+    margin-top: 15px;
+    gap: 15px;
+  }
+
+  /* Image moves below text — no overlap */
+  .projects-hero-image {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 280px;
+    margin: 0;
+    border-radius: 35% 4px 4px 4px;
+  }
+
+  .projects-image-caption {
+    left: 18px;
+    bottom: 18px;
+    gap: 8px;
+  }
+
+  .projects-image-caption strong {
+    font-size: 19px;
+  }
+
+  .projects-hero-footer {
+    margin-top: 5px;
+    gap: 12px;
+    font-size: 7px;
+    letter-spacing: .8px;
+  }
+
+  /* OVERVIEW */
+  .projects-overview {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 75px 7%;
+  }
+
+  .projects-overview-left h2 {
+    font-size: clamp(48px, 12vw, 62px);
+    line-height: .95;
+  }
+
+  .projects-overview-right p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* FEATURED PROJECT */
+  .projects-featured,
+  .projects-categories {
+    padding: 75px 6%;
+  }
+
+  .projects-section-heading {
+    display: block;
+    margin-bottom: 35px;
+  }
+
+  .projects-section-heading h2 {
+    font-size: clamp(40px, 10vw, 52px);
+    line-height: 1;
+  }
+
+  .projects-featured-image {
+    height: 280px;
+    min-height: 0;
+    border-radius: 4px 4px 55px 4px;
+  }
+
+  .projects-featured-image .projects-image-index {
+    top: 15px;
+    left: 15px;
+    padding: 10px 12px;
+    font-size: 8px;
+  }
+
+  .projects-featured-info {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 25px 0;
+  }
+
+  .projects-featured-info h3 {
+    font-size: 24px;
+  }
+
+  /* CATEGORIES */
+  .projects-category-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .projects-category-card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .projects-category-card img,
+  .projects-category-card:nth-child(even) img {
+    height: 260px;
+    border-radius: 4px 4px 55px 4px;
+  }
+
+  .projects-category-card > span {
+    margin-top: 17px;
+  }
+
+  .projects-category-card h3 {
+    font-size: 25px;
+  }
+
+  /* CTA */
+  .projects-cta {
+    min-height: 400px;
+    padding: 75px 7%;
+  }
+
+  .projects-cta h2 {
+    font-size: clamp(48px, 12vw, 65px);
+    line-height: .95;
+  }
+
+  .projects-cta-button {
+    gap: 20px;
+    padding: 15px 18px;
+  }
+}
+
+
+/* SMALL PHONES */
+@media (max-width: 380px) {
+
+  .projects-hero h1 {
+    font-size: 46px;
+  }
+
+  .projects-hero-image {
+    height: 235px;
+  }
+
+  .projects-hero-footer {
+    flex-wrap: wrap;
+  }
+
+  .projects-overview-left h2 {
+    font-size: 46px;
+  }
+
+  .projects-category-card h3 {
+    font-size: 22px;
+  }
+
+  .projects-cta h2 {
+    font-size: 48px;
+  }
+}
 
 
 
