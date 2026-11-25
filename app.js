@@ -24,6 +24,14 @@ app.use(express.json());
 
 
 
+app.use((req, res, next) => {
+    res.locals.currentPath = req.path;
+    next();
+});
+
+
+
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -75,6 +83,11 @@ app.get("/contact", (req, res) => {
 });
 
 app.use("/contact", contactRouter);
+
+
+
+
+
 
 
 

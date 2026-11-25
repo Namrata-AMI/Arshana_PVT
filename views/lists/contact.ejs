@@ -1,198 +1,329 @@
-<% layout("/layouts/boilerplate.ejs") %>
 
+<% layout("/layouts/boilerplate.ejs") %>
 
 <main class="ar-contact">
 
-  <!-- Full-screen video background -->
-  <section class="contact-hero">
+    <!-- =========================================
+         01 — CONTACT HERO
+    ========================================== -->
 
-    <video
-      class="contact-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="/assets/contact.png"
-    >
-      <source src="/assets/contact.mp4" type="video/mp4">
+
+<section class="contact-hero contact-hero-full">
+
+    <video class="contact-full-video"
+           autoplay muted loop playsinline preload="auto"
+           poster="/assets/contact.png">
+        <source src="/assets/contact.mp4" type="video/mp4">
     </video>
 
-    <div class="contact-overlay"></div>
-
-    <!-- Left content -->
-    <div class="contact-left">
-
-      <div class="contact-heading">
-        <h1>Let's<br>Build.</h1>
-      </div>
-
-      <div class="contact-details">
-
-        <div class="contact-detail-group">
-          <span class="contact-label">EMAIL</span>
-          <a href="mailto:info@arshanapvtltd.com">
-            [ INFO@ARSHANAPVTLTD.COM ]
-          </a>
-        </div>
-
-        <div class="contact-detail-group">
-          <span class="contact-label">PHONE</span>
-          <a href="tel:+919876543210">
-            [ +91 98765 43210 ]
-          </a>
-        </div>
-
-        <div class="contact-detail-group">
-          <span class="contact-label">OFFICE</span>
-          <p>Jaunpur, Uttar Pradesh, India</p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Right inquiry form -->
-    <div class="contact-form-wrapper">
-
-      <form action="/contact" method="POST" class="contact-form">
-
-        <input
-          type="text"
-          name="fullName"
-          placeholder="FULL NAME"
-          required
-        >
-
-        <input
-          type="email"
-          name="email"
-          placeholder="EMAIL ADDRESS"
-          required
-        >
-
-        <input
-          type="text"
-          name="companyName"
-          placeholder="COMPANY NAME"
-        >
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="PHONE NUMBER"
-          required
-        >
-
-        <select name="projectType" required>
-          <option value="" disabled selected>
-            WHAT ARE YOU LOOKING FOR?
-          </option>
-          <option value="Pipeline Construction">PIPELINE CONSTRUCTION</option>
-          <option value="Welding Services">WELDING SERVICES</option>
-          <option value="Hydrotesting">HYDROTESTING</option>
-          <option value="Infrastructure Projects">INFRASTRUCTURE PROJECTS</option>
-          <option value="Other">OTHER</option>
-        </select>
-
-        <textarea
-          name="message"
-          placeholder="TELL US ABOUT YOUR PROJECT"
-          rows="3"
-          required
-        ></textarea>
-
-        <select name="budget">
-          <option value="" disabled selected>
-            WHAT IS YOUR PROJECT SCALE?
-          </option>
-          <option value="Small">SMALL SCALE</option>
-          <option value="Medium">MEDIUM SCALE</option>
-          <option value="Large">LARGE SCALE</option>
-          <option value="Not decided">NOT DECIDED</option>
-        </select>
-
-        <select name="timeline">
-          <option value="" disabled selected>
-            WHEN ARE YOU LOOKING TO START?
-          </option>
-          <option value="Immediately">IMMEDIATELY</option>
-          <option value="Within 1 month">WITHIN 1 MONTH</option>
-          <option value="Within 3 months">WITHIN 3 MONTHS</option>
-          <option value="Planning stage">PLANNING STAGE</option>
-        </select>
-
-        <button type="submit" class="contact-submit">
-          SEND ENQUIRY <span>↗</span>
-        </button>
-
-      </form>
-    </div>
-
-    <div class="contact-bottom-note">
-      <span>ARSHANA PVT. LTD.</span>
-      <span>ENGINEERING · INFRASTRUCTURE · EXECUTION</span>
-    </div>
-
-  </section>
+    <div class="contact-full-overlay"></div>
 
 
+    <div class="contact-hero-main">
+        <div class="contact-hero-copy">
+            <h1 class="contact-title">
+                Let's build
+                <span>what's next<span class="contact-orange">.</span></span>
+            </h1>
 
-<!-- OFFICE LOCATION & CONTACT DETAILS -->
-<section class="contact-info-section">
+            <p class="contact-description">
+                Every great project begins with a conversation.
+                Tell us what you're planning, and let's explore
+                what's possible together.
+            </p>
 
-    <div class="contact-info-heading">
-        <span>GET IN TOUCH</span>
-        <h2>Find us. Connect with us.</h2>
-        <p>Have a project in mind? Reach out to our team.</p>
-    </div>
-
-    <div class="contact-info-grid">
-
-        <!-- Google Map -->
-        
-    <!-- Google Map -->
-      <div class="contact-map">
-          <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.730655246906!2d82.6811283743969!3d25.746419309237936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39903b003cd20e35%3A0xe44c71636de00c8f!2sArchana!5e0!3m2!1sen!2sin!4v1794443623252!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-      </div>
-
-
-        <!-- Contact Cards -->
-        <div class="contact-info-cards">
-
-            <a href="tel:+919876543210" class="contact-info-card">
-                <span class="contact-info-icon">☎</span>
-                <div>
-                    <small>CALL NOW</small>
-                    <h3>+91 98765 43210</h3>
-                    <p>Speak directly with our team ↗</p>
-                </div>
+            <a href="#contact-form-section" class="contact-scroll-link">
+                <span>START YOUR ENQUIRY</span>
+                <span class="contact-scroll-arrow">↓</span>
             </a>
-
-            <a
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-info-card">
-                <span class="contact-info-icon">◉</span>
-                <div>
-                    <small>WHATSAPP</small>
-                    <h3>Chat With Us</h3>
-                    <p>Let's discuss your project ↗</p>
-                </div>
-            </a>
-
-
         </div>
     </div>
+
+    <div class="contact-hero-bottom">
+        <span>ENGINEERING</span>
+        <span class="contact-bottom-line"></span>
+        <span>INFRASTRUCTURE</span>
+        <span class="contact-bottom-line"></span>
+        <span>EXECUTION</span>
+    </div>
+
 </section>
 
 
-</main>
 
+    <!-- =========================================
+         02 — ENQUIRY SECTION
+    ========================================== -->
+
+    <section class="contact-enquiry" id="contact-form-section">
+
+        <div class="contact-enquiry-heading">
+
+            <h2>
+                Have something<br>
+                <span>in mind?</span>
+            </h2>
+
+            <p>
+                Whether it's a new project, a partnership or simply
+                an idea worth discussing, we'd like to hear from you.
+            </p>
+
+            <div class="contact-direct-details">
+
+                <a href="mailto:info@arshanapvtltd.com">
+                    <span>EMAIL US</span>
+                    info@arshanapvtltd.com
+                    <span class="contact-detail-arrow">↗</span>
+                </a>
+
+                <a href="tel:+919876543210">
+                    <span>CALL OUR TEAM</span>
+                    +91 98765 43210
+                    <span class="contact-detail-arrow">↗</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-form-panel">
+
+            <div class="contact-form-heading">
+                <div>
+                    <span class="contact-form-index">ENQUIRY FORM / 01</span>
+                    <h3>Let's get to work.</h3>
+                </div>
+
+                <span class="contact-form-star">✳</span>
+            </div>
+
+
+            <form action="/contact" method="POST" class="contact-form">
+
+                <div class="contact-form-grid">
+
+                    <div class="contact-field">
+                        <label for="fullName">01 — FULL NAME *</label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Your name"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="email">02 — EMAIL ADDRESS *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@company.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="companyName">03 — COMPANY</label>
+                        <input
+                            type="text"
+                            id="companyName"
+                            name="companyName"
+                            placeholder="Your company name"
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="phone">04 — PHONE NUMBER *</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+91"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field contact-field-full">
+                        <label for="projectType">05 — WHAT DO YOU NEED? *</label>
+
+                        <select id="projectType" name="projectType" required>
+                            <option value="" disabled selected>
+                                Select a service
+                            </option>
+                            <option value="Pipeline Construction">Pipeline Construction</option>
+                            <option value="Welding Services">Welding Services</option>
+                            <option value="Hydrotesting">Hydrotesting</option>
+                            <option value="Infrastructure Projects">Infrastructure Projects</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="contact-field contact-field-full">
+                        <label for="message">06 — TELL US ABOUT YOUR PROJECT *</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            placeholder="A little about your project, requirements and goals..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="budget">07 — PROJECT SCALE</label>
+
+                        <select id="budget" name="budget">
+                            <option value="" disabled selected>Select scale</option>
+                            <option value="Small">Small scale</option>
+                            <option value="Medium">Medium scale</option>
+                            <option value="Large">Large scale</option>
+                            <option value="Not decided">Not decided</option>
+                        </select>
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="timeline">08 — PROJECT TIMELINE</label>
+
+                        <select id="timeline" name="timeline">
+                            <option value="" disabled selected>Select timeline</option>
+                            <option value="Immediately">Immediately</option>
+                            <option value="Within 1 month">Within 1 month</option>
+                            <option value="Within 3 months">Within 3 months</option>
+                            <option value="Planning stage">Planning stage</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-form-footer">
+
+                    <p>
+                        By submitting this form, you agree to be
+                        contacted by our team regarding your enquiry.
+                    </p>
+
+                    <button type="submit" class="contact-submit">
+                        <span>SUBMIT ENQUIRY</span>
+                        <span class="contact-submit-arrow">↗</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         03 — OFFICE LOCATION
+    ========================================== -->
+
+    <section class="contact-location">
+
+        <div class="contact-location-header">
+
+            <div>
+
+                <h2>
+                    Let's meet<br>
+                    <span>where it matters.</span>
+                </h2>
+            </div>
+
+            <p>
+                Based in Jaunpur, Uttar Pradesh.
+                Get in touch or visit our office to discuss
+                your next project.
+            </p>
+
+        </div>
+
+
+        <div class="contact-location-grid">
+
+            <div class="contact-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.730655246906!2d82.6811283743969!3d25.746419309237936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39903b003cd20e35%3A0xe44c71636de00c8f!2sArchana!5e0!3m2!1sen!2sin!4v1794443623252!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+
+            <div class="contact-location-details">
+
+                <div class="contact-location-card">
+                    <span class="contact-location-number">01</span>
+                    <span class="contact-location-label">OUR OFFICE</span>
+                    <h3>Jaunpur</h3>
+                    <p>Uttar Pradesh, India</p>
+                </div>
+
+                <div class="contact-location-card">
+                    <span class="contact-location-number">02</span>
+                    <span class="contact-location-label">GIVE US A CALL</span>
+                    <h3>+91 98765 43210</h3>
+                    <p>Speak directly with our team.</p>
+                    <a href="tel:+919876543210">CALL NOW ↗</a>
+                </div>
+
+                <div class="contact-location-card">
+                    <span class="contact-location-number">03</span>
+                    <span class="contact-location-label">PREFER MESSAGING?</span>
+                    <h3>Let's talk.</h3>
+                    <p>Connect with us on WhatsApp.</p>
+                    <a
+                        href="https://wa.me/919876543210"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        CHAT WITH US ↗
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         04 — FINAL CTA
+    ========================================== -->
+
+    <section class="contact-final">
+
+        <span class="contact-section-label">
+            HAVE A PROJECT IN MIND?
+        </span>
+
+        <h2>
+            Good things<br>
+            start with <span>a hello.</span>
+        </h2>
+
+        <a href="#contact-form-section" class="contact-final-link">
+            START A CONVERSATION
+            <span>↗</span>
+        </a>
+
+        <div class="contact-final-bottom">
+            <span>ARSHANA PVT. LTD.</span>
+            <span>ENGINEERING · INFRASTRUCTURE · EXECUTION</span>
+        </div>
+
+    </section>
+
+</main>

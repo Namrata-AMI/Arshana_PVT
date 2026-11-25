@@ -4029,3 +4029,936 @@ img {
     transform: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   ARSHANA — UPDATED HERO WITH COMPANY STATISTICS
+   Add at the END of homepage.css
+===================================================== */
+
+.arshana-hero {
+    min-height: 720px;
+    padding: 145px 0 90px;
+    overflow: hidden;
+}
+
+/* Dark overlay */
+.arshana-hero .hero-overlay {
+    background: linear-gradient(
+        100deg,
+        rgba(10, 28, 48, .96) 0%,
+        rgba(16, 39, 67, .88) 48%,
+        rgba(16, 39, 67, .60) 100%
+    );
+}
+
+/* Main layout */
+.arshana-hero .hero-stats-layout {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 65px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* Heading area */
+.arshana-hero .hero-heading-area {
+    max-width: 650px;
+}
+
+.arshana-hero .hero-heading-area::before {
+    content: "ARSHANA PROJECT PRIVATE LIMITED";
+    display: block;
+    margin-bottom: 25px;
+    color: var(--arshana-orange-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.arshana-hero .hero-heading-area h1 {
+    max-width: 650px;
+    font-size: clamp(48px, 5.5vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+.arshana-hero .hero-heading-area h1 span {
+    color: var(--arshana-orange-light);
+}
+
+.arshana-hero .hero-heading-area p {
+    max-width: 480px;
+    margin-top: 24px;
+    color: rgba(255,255,255,.78);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+/* Explore button */
+.arshana-hero .hero-secondary-btn {
+    margin-top: 22px;
+    padding: 11px 18px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 50px;
+    background: rgba(255,255,255,.08);
+    gap: 25px;
+}
+
+.arshana-hero .hero-secondary-btn:hover {
+    border-color: var(--arshana-orange);
+    background: var(--arshana-orange);
+    color: #fff;
+}
+
+/* Statistics grid */
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    width: 100%;
+    max-width: 510px;
+    margin-left: auto;
+}
+
+/* Individual statistic cards */
+.hero-stat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 175px;
+    padding: 23px 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 12px;
+    background: rgba(255,255,255,.94);
+    transition: transform .35s ease, background .35s ease;
+}
+
+.hero-stat-card::after {
+    position: absolute;
+    right: -28px;
+    bottom: -40px;
+    width: 105px;
+    height: 105px;
+    content: "";
+    border: 1px solid rgba(232,117,59,.22);
+    border-radius: 50%;
+    transition: transform .4s ease;
+}
+
+.hero-stat-card:hover {
+    transform: translateY(-5px);
+    background: #fff;
+}
+
+.hero-stat-card:hover::after {
+    transform: scale(1.3);
+}
+
+.hero-stat-card > span {
+    color: var(--arshana-orange);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.hero-stat-card h2 {
+    margin: 18px 0 5px;
+    color: var(--arshana-navy);
+    font-size: clamp(32px, 3.5vw, 46px);
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.hero-stat-card p {
+    margin: 0;
+    color: #596779;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+/* Slider controls */
+.arshana-hero .hero-slider-controls {
+    margin-top: 45px;
+}
+
+/* Hide old floating card if its markup is still present */
+.arshana-hero .hero-feature-card {
+    display: none;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 991px) {
+    .arshana-hero {
+        min-height: auto;
+        padding: 135px 0 85px;
+    }
+
+    .arshana-hero .hero-stats-layout {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .arshana-hero .hero-heading-area {
+        max-width: 700px;
+    }
+
+    .hero-stats-grid {
+        max-width: 650px;
+        margin-left: 0;
+    }
+
+    .hero-stat-card {
+        min-height: 150px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 576px) {
+    .arshana-hero {
+        padding: 125px 0 65px;
+    }
+
+    .arshana-hero .hero-stats-layout {
+        gap: 30px;
+    }
+
+    .arshana-hero .hero-heading-area::before {
+        margin-bottom: 18px;
+        font-size: 8px;
+        letter-spacing: 1.7px;
+    }
+
+    .arshana-hero .hero-heading-area h1 {
+        font-size: clamp(38px, 10vw, 50px);
+        line-height: 1.12;
+        letter-spacing: -2px;
+    }
+
+    .arshana-hero .hero-heading-area p {
+        margin-top: 17px;
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+    .hero-stats-grid {
+        gap: 9px;
+    }
+
+    .hero-stat-card {
+        min-height: 135px;
+        padding: 16px 13px;
+        border-radius: 9px;
+    }
+
+    .hero-stat-card > span {
+        font-size: 7px;
+        letter-spacing: .7px;
+    }
+
+    .hero-stat-card h2 {
+        margin: 14px 0 4px;
+        font-size: 32px;
+    }
+
+    .hero-stat-card p {
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .arshana-hero .hero-slider-controls {
+        margin-top: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ARSHANA — SERVICES SECTION FIX
+========================================= */
+
+.arshana-expertise-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(
+        120deg,
+        #eaf3fc 0%,
+        #f8fafc 50%,
+        #e8f0f9 100%
+    );
+}
+
+/* Section heading */
+
+.arshana-expertise-section .arshana-section-heading {
+    max-width: 1120px;
+    margin: 0 auto 42px;
+    padding: 0 20px;
+}
+
+/* Fix the cards container */
+
+.arshana-expertise-section :has(> .arshana-service-card) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* Individual service card */
+
+.arshana-service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(25, 55, 91, 0.10);
+    border-radius: 5px;
+    box-shadow: 0 12px 35px rgba(25, 55, 91, 0.07);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.arshana-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px rgba(25, 55, 91, 0.14);
+}
+
+/* Service image */
+
+.arshana-service-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #dce7f1;
+}
+
+.arshana-service-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.arshana-service-card:hover .arshana-service-image img {
+    transform: scale(1.07);
+}
+
+/* Service information */
+
+.arshana-service-info {
+    position: relative;
+    padding: 24px 24px 28px;
+    background: #ffffff;
+}
+
+/* Number */
+
+.arshana-service-number {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #e8753b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Category */
+
+.arshana-service-category {
+    display: block;
+    margin-bottom: 9px;
+    color: #718197;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Service title */
+
+.arshana-service-info h3 {
+    margin: 0;
+    color: #19375b;
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* Description */
+
+.arshana-service-info p {
+    margin: 14px 0 0;
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Arrow */
+
+.arshana-service-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-top: 22px;
+    color: #ffffff;
+    background: #19375b;
+    border-radius: 50%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.arshana-service-card:hover .arshana-service-arrow {
+    background: #e8753b;
+    transform: translateX(5px);
+}
+
+/* Footer */
+
+.arshana-expertise-footer {
+    width: min(1120px, calc(100% - 40px));
+    margin: 45px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(25, 55, 91, 0.15);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .arshana-expertise-section {
+        padding: 75px 0;
+    }
+
+    .arshana-expertise-section :has(> .arshana-service-card) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .arshana-service-image {
+        height: 220px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .arshana-expertise-section {
+        padding: 60px 0;
+    }
+
+    .arshana-expertise-section :has(> .arshana-service-card) {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .arshana-service-image {
+        height: 230px;
+    }
+
+    .arshana-service-info {
+        padding: 22px;
+    }
+
+    .arshana-service-info h3 {
+        font-size: 23px;
+    }
+}
+
+/* Prevent old floating animation from breaking card hover */
+
+.arshana-service-card {
+    animation: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ARSHANA — SERVICES
+   DARK EDITORIAL DESIGN
+========================================= */
+
+.arshana-expertise-section {
+    position: relative;
+    padding: 110px 0 90px;
+    overflow: hidden;
+    background: #102743;
+    color: #fff;
+}
+
+/* Subtle background glow */
+
+.arshana-expertise-section::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    top: 10%;
+    right: -250px;
+    border-radius: 50%;
+    background: rgba(67, 142, 174, 0.12);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.arshana-expertise-container {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, calc(100% - 50px));
+    margin: 0 auto;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.arshana-expertise-heading {
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+    align-items: end;
+    gap: 50px;
+    margin-bottom: 65px;
+}
+
+.arshana-expertise-eyebrow {
+    display: block;
+    grid-column: 1 / -1;
+    margin-bottom: -30px;
+    color: #e8753b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.arshana-expertise-heading h2 {
+    max-width: 650px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -2px;
+}
+
+.arshana-expertise-heading h2 span {
+    display: block;
+    color: #e8753b;
+}
+
+.arshana-expertise-heading p {
+    max-width: 380px;
+    margin: 0 0 5px;
+    color: #aebdce;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* =========================================
+   SERVICE LIST
+========================================= */
+
+.arshana-expertise-grid {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Individual row */
+
+.arshana-service-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    align-items: center;
+    gap: 45px;
+    padding: 28px 20px;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    transition: background 0.4s ease, padding 0.4s ease;
+}
+
+.arshana-service-card:hover {
+    padding-left: 32px;
+    padding-right: 32px;
+    background: rgba(255,255,255,0.045);
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.arshana-service-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 175px;
+    overflow: hidden;
+    background: #243e59;
+}
+
+.arshana-service-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.arshana-service-card:hover .arshana-service-image img {
+    transform: scale(1.08);
+}
+
+/* Number on image */
+
+.arshana-service-number {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    background: #e8753b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Arrow */
+
+.arshana-service-arrow {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: #102743;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 19px;
+    transition: all 0.3s ease;
+}
+
+.arshana-service-card:hover .arshana-service-arrow {
+    color: #fff;
+    background: #e8753b;
+    transform: rotate(45deg);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.arshana-service-info {
+    position: relative;
+    padding: 10px 60px 10px 0;
+}
+
+.arshana-service-category {
+    display: block;
+    margin-bottom: 13px;
+    color: #e8753b;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.arshana-service-info h3 {
+    margin: 0 0 13px;
+    color: #fff;
+    font-size: clamp(23px, 3vw, 34px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.arshana-service-info p {
+    max-width: 530px;
+    margin: 0;
+    color: #aebdce;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.arshana-expertise-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 35px;
+}
+
+.arshana-expertise-footer > span {
+    color: #8fa3b9;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.arshana-expertise-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.arshana-expertise-footer a span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    background: #e8753b;
+    border-radius: 50%;
+    font-size: 17px;
+    transition: transform 0.3s ease;
+}
+
+.arshana-expertise-footer a:hover span {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .arshana-expertise-section {
+        padding: 75px 0;
+    }
+
+    .arshana-expertise-heading {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .arshana-expertise-eyebrow {
+        grid-column: auto;
+        margin-bottom: 0;
+    }
+
+    .arshana-expertise-heading h2 {
+        font-size: 42px;
+    }
+
+    .arshana-expertise-heading p {
+        max-width: 500px;
+    }
+
+    .arshana-service-card {
+        grid-template-columns: 210px 1fr;
+        gap: 25px;
+        padding: 22px 10px;
+    }
+
+    .arshana-service-image {
+        height: 155px;
+    }
+
+    .arshana-service-info {
+        padding-right: 35px;
+    }
+
+    .arshana-service-info h3 {
+        font-size: 24px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+    .arshana-expertise-section {
+        padding: 65px 0;
+    }
+
+    .arshana-expertise-container {
+        width: calc(100% - 36px);
+    }
+
+    .arshana-expertise-heading h2 {
+        font-size: 35px;
+        letter-spacing: -1.3px;
+    }
+
+    .arshana-expertise-heading p {
+        font-size: 13px;
+    }
+
+    .arshana-service-card {
+        grid-template-columns: 115px 1fr;
+        gap: 17px;
+        padding: 20px 0;
+    }
+
+    .arshana-service-card:hover {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .arshana-service-image {
+        height: 135px;
+    }
+
+    .arshana-service-number {
+        top: 7px;
+        left: 7px;
+        width: 27px;
+        height: 27px;
+        font-size: 10px;
+    }
+
+    .arshana-service-arrow {
+        right: 6px;
+        bottom: 6px;
+        width: 27px;
+        height: 27px;
+        font-size: 14px;
+    }
+
+    .arshana-service-info {
+        padding: 0;
+    }
+
+    .arshana-service-category {
+        margin-bottom: 8px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .arshana-service-info h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+
+    .arshana-service-info p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .arshana-expertise-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 25px;
+    }
+}

@@ -1,13 +1,7 @@
 
-/******************************************* gallery css ******************/
-
-
-
-
-
 /* =====================================================
    ARSHANA PVT. LTD. — GALLERY
-   Brand: Navy Blue / Steel Blue / Orange / White
+   Navy Blue / Steel Blue / Orange / White
 ===================================================== */
 
 .ar-gallery {
@@ -22,7 +16,6 @@
   --white: #ffffff;
   --off-white: #f4f6f8;
   --dark: #0d1b2a;
-  
 
   width: 100%;
   overflow: clip;
@@ -54,6 +47,9 @@
 
 .gallery-intro {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
   min-height: 88vh;
   padding: 145px 7% 45px;
 
@@ -63,14 +59,45 @@
 
   color: var(--deep-navy);
 
-background: linear-gradient(
-  110deg,
-  #F4F8FC 0%,
-  #DCEAF5 35%,
-  #A9C5DF 60%,
-  #547493 80%,
-  #19375B 100%
-);
+  /* Left: light | Right: deep navy */
+  background: linear-gradient(
+    105deg,
+    #f4f8fc 0%,
+    #dceaf5 25%,
+    #a9c5df 48%,
+    #547493 73%,
+    #19375b 100%
+  );
+}
+
+/* Background photograph */
+.gallery-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: url("/assets/gallery1.png")
+    center 50% / cover no-repeat;
+
+  animation: galleryImageMove 18s ease-in-out infinite alternate;
+}
+
+/* Keep intro content above the background */
+.gallery-intro > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle image zoom */
+@keyframes galleryImageMove {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
 }
 
 .gallery-intro-top,
@@ -125,7 +152,7 @@ background: linear-gradient(
   max-width: 440px;
   margin: 35px 0 0;
 
-  color: #244D76;
+  color: #244d76;
   font-size: 14px;
   line-height: 1.9;
 }
@@ -136,10 +163,11 @@ background: linear-gradient(
 ===================================================== */
 
 .gallery-horizontal-section {
-  position: relative;
-  width: 100%;
-  background: var(--deep-navy);
+    position: relative;
+    width: 100%;
+    background: var(--deep-navy);
 }
+
 
 .gallery-horizontal-sticky {
   position: relative;
@@ -157,11 +185,11 @@ background: linear-gradient(
 
   background: linear-gradient(
     110deg,
-    #DCEAF5 0%,
-    #A9C5DF 25%,
-    #6F96BA 50%,
-    #3E6D99 72%,
-    #19375B 100%
+    #dceaf5 0%,
+    #a9c5df 25%,
+    #6f96ba 50%,
+    #3e6d99 72%,
+    #19375b 100%
   );
 }
 
@@ -174,7 +202,6 @@ background: linear-gradient(
   height: 100%;
 
   gap: 0;
-
   will-change: transform;
 }
 
@@ -194,7 +221,12 @@ background: linear-gradient(
 
   overflow: hidden;
 
-  background: linear-gradient(135deg, #6F96BA, #244D76, #102743);
+  background: linear-gradient(
+    135deg,
+    #6f96ba,
+    #244d76,
+    #102743
+  );
 }
 
 
@@ -247,41 +279,23 @@ background: linear-gradient(
 }
 
 
-/* Blue-toned image overlays */
-
-.scene-image-left::after,
-.scene-image-center::after,
-.scene-image-right::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  background: linear-gradient(
-    0deg,
-    rgba(9, 25, 43, .32),
-    rgba(16, 39, 67, .04) 60%
-  );
-}
-
-
 /* =====================================================
-   05 — FLOATING GLASS INFORMATION CARD
+   05 — FLOATING INFORMATION CARD
 ===================================================== */
 
 .gallery-floating-card {
   position: absolute;
   z-index: 3;
+
   left: 30%;
   bottom: 3%;
+
   width: min(600px, 47%);
   padding: 12px;
+
   border: 1px solid rgba(255, 255, 255, .35);
   border-radius: 34px;
 
-  /* Lighter blur for better performance */
   background: rgba(220, 231, 240, .94);
   color: var(--deep-navy);
 
@@ -296,13 +310,11 @@ background: linear-gradient(
 
 .floating-card-top {
   min-height: 50px;
-
   padding: 0 18px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: 15px;
 }
 
@@ -340,7 +352,12 @@ background: linear-gradient(
 
   border-radius: 27px;
 
-  background: linear-gradient(135deg, #3E6D99, #244D76, #102743);
+  background: linear-gradient(
+    135deg,
+    #3e6d99,
+    #244d76,
+    #102743
+  );
 
   color: var(--white);
 }
@@ -438,7 +455,6 @@ background: linear-gradient(
 
   display: flex;
   align-items: center;
-
   gap: 17px;
 
   color: var(--white);
@@ -457,7 +473,6 @@ background: linear-gradient(
   height: 2px;
 
   overflow: hidden;
-
   background: rgba(255, 255, 255, .25);
 }
 
@@ -477,7 +492,6 @@ background: linear-gradient(
 
 .gallery-end {
   min-height: 85vh;
-
   padding: 120px 7%;
 
   display: flex;
@@ -525,12 +539,10 @@ background: linear-gradient(
 
 .gallery-contact-link {
   margin-top: 25px;
-
   padding: 16px 22px;
 
   display: inline-flex;
   align-items: center;
-
   gap: 35px;
 
   border-radius: 40px;
@@ -576,7 +588,6 @@ background: linear-gradient(
     min-height: 0;
 
     padding: 25px 5%;
-
     overflow: visible;
   }
 
@@ -585,7 +596,6 @@ background: linear-gradient(
     height: auto;
 
     flex-direction: column;
-
     transform: none !important;
   }
 
@@ -594,7 +604,6 @@ background: linear-gradient(
     height: 75svh;
 
     min-height: 550px;
-
     flex: 0 0 auto;
 
     margin-bottom: 22px;
@@ -620,7 +629,6 @@ background: linear-gradient(
   .gallery-floating-card {
     left: 8%;
     bottom: 5%;
-
     width: 84%;
   }
 
@@ -662,6 +670,10 @@ background: linear-gradient(
     font-size: 12px;
   }
 
+  .gallery-intro::before {
+    background-position: 60% center;
+  }
+
   .gallery-scene {
     height: 70svh;
     min-height: 470px;
@@ -685,7 +697,6 @@ background: linear-gradient(
     bottom: 12px;
 
     width: auto;
-
     padding: 8px;
 
     border-radius: 23px;
@@ -757,6 +768,96 @@ background: linear-gradient(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   GALLERY — SIGNATURE TYPOGRAPHY
+===================================================== */
+
+.gallery-intro-content h1 {
+    max-width: 1150px;
+    margin: 28px 0;
+
+    font-family: "Sora", sans-serif;
+    font-size: clamp(65px, 8.5vw, 116px);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.085em;
+
+    color: #fffaf2;
+
+    -webkit-text-fill-color: #fffaf2;
+
+    text-shadow:
+        0 3px 8px rgba(8, 29, 53, .30),
+        0 12px 35px rgba(8, 29, 53, .22);
+}
+
+.gallery-intro-content h1 span {
+    display: inline-block;
+
+    font-family: "Sora", sans-serif;
+    font-weight: 400;
+    letter-spacing: -.075em;
+
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+
+    text-shadow:
+        0 3px 8px rgba(8, 29, 53, .35),
+        0 12px 35px rgba(8, 29, 53, .25);
+}
+
+/* Orange signature accent */
+.gallery-intro-content h1 span i {
+    color: #f18a4b;
+    -webkit-text-fill-color: #f18a4b;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Description */
+.gallery-intro-content p {
+    max-width: 440px;
+    margin-top: 30px;
+
+    color: #ffffff;
+    font-family: "Manrope", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.9;
+
+    text-shadow: 0 2px 12px rgba(8, 29, 53, .75);
+}
+
+/* Eyebrow */
+.gallery-eyebrow {
+    color: #f18a4b;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .gallery-intro-content h1 {
+        font-size: 12.5vw;
+        line-height: 1.05;
+    }
+}
 
 
 

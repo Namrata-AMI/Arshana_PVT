@@ -802,6 +802,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const journey = document.querySelector(".ar-journey-section");
+
+    if (!journey || !window.gsap || !window.ScrollTrigger) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const yearPanel = journey.querySelector(".ar-journey-year");
+    const description = journey.querySelector(".ar-journey-description");
+
+    const year = journey.querySelector(".ar-journey-year h3");
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: journey,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+        }
+    });
+
+    tl.from(yearPanel, {
+        x: -65,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    })
+    .from(description, {
+        x: 55,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.65")
+    .from(year, {
+        y: 25,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.out"
+    }, "-=0.6");
+
+});
+
+
+
+
+
+
+
 
 
 
@@ -948,6 +996,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const serviceOptions = document.querySelectorAll(".service-option");
+
+    const activeImage = document.getElementById("activeServiceImage");
+    const activeLabel = document.getElementById("activeServiceLabel");
+    const activeNumber = document.getElementById("activeServiceNumber");
+    const activeTitle = document.getElementById("activeServiceTitle");
+    const activeDescription = document.getElementById("activeServiceDescription");
+
+    if (!serviceOptions.length || !activeImage) return;
+
+    serviceOptions.forEach((option) => {
+
+        option.addEventListener("click", () => {
+
+            // Update active button
+            serviceOptions.forEach((item) => {
+                item.classList.remove("active");
+                item.setAttribute("aria-pressed", "false");
+            });
+
+            option.classList.add("active");
+            option.setAttribute("aria-pressed", "true");
+
+            // Get selected service information
+            const number = option.dataset.number;
+            const title = option.dataset.title;
+            const label = option.dataset.label;
+            const image = option.dataset.image;
+            const alt = option.dataset.alt;
+            const description = option.dataset.description;
+
+            // Fade out old image
+            activeImage.style.opacity = "0";
+            activeImage.style.transform = "scale(1.03)";
+
+            // Preload the new image before updating the panel
+            const newImage = new Image();
+
+            newImage.onload = () => {
+                activeImage.src = image;
+                activeImage.alt = alt;
+
+                requestAnimationFrame(() => {
+                    activeImage.style.opacity = "1";
+                    activeImage.style.transform = "scale(1)";
+                });
+            };
+
+            newImage.onerror = () => {
+                activeImage.style.opacity = "1";
+                activeImage.style.transform = "scale(1)";
+            };
+
+            newImage.src = image;
+
+            // Update selected service details
+            activeLabel.textContent = label;
+            activeNumber.textContent = number;
+            activeTitle.textContent = title;
+            activeDescription.textContent = description;
+
+        });
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1013,158 +1141,249 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
 //////////////////////// gallery js ///////////////////////
 
 
 
 
+// =====================================================
+// ARSHANA — HORIZONTAL GALLERY
+// GSAP + ScrollTrigger
+// =====================================================
+
 document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector(".gallery-horizontal-section");
-  const sticky = document.querySelector(".gallery-horizontal-sticky");
-  const track = document.querySelector(".gallery-track");
-  const scenes = gsap.utils.toArray(".gallery-scene");
 
-  if (!section || !sticky || !track || !scenes.length) return;
-  if (!window.gsap || !window.ScrollTrigger) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const desktopQuery = window.matchMedia("(min-width: 901px)");
-
-  let horizontalTween = null;
-  let sceneObserver = null;
-
-  function updateProgress(progress) {
-    const progressBar = document.querySelector(
-      ".gallery-progress-line span"
-    );
-
-    const counter = document.querySelector(
-      ".gallery-progress-count"
-    );
-
-    const total = scenes.length;
-
-    const current = Math.min(
-      total,
-      Math.floor(progress * total) + 1
-    );
-
-    if (progressBar) {
-      progressBar.style.width = `${progress * 100}%`;
+    if (!window.gsap || !window.ScrollTrigger) {
+        console.error("GSAP or ScrollTrigger is not loaded.");
+        return;
     }
 
-    if (counter) {
-      counter.textContent =
-        `${String(current).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
-    }
-  }
+    gsap.registerPlugin(ScrollTrigger);
 
-  function destroyGallery() {
-    if (horizontalTween) {
-      horizontalTween.scrollTrigger?.kill();
-      horizontalTween.kill();
-      horizontalTween = null;
-    }
+    const section = document.querySelector(".gallery-horizontal-section");
+    const sticky = document.querySelector(".gallery-horizontal-sticky");
+    const track = document.querySelector(".gallery-track");
+    const scenes = gsap.utils.toArray(".gallery-scene");
 
-    ScrollTrigger.getAll().forEach(trigger => {
-      if (trigger.vars.id === "arshana-gallery") {
-        trigger.kill();
-      }
-    });
-
-    gsap.set(track, { clearProps: "transform" });
-    section.style.height = "";
-  }
-
-  function setupGallery() {
-    destroyGallery();
-
-    if (!desktopQuery.matches) {
-      scenes.forEach((scene, index) => {
-        scene.classList.toggle("is-active", index === 0);
-      });
-
-      updateProgress(0);
-      return;
+    if (!section || !sticky || !track || !scenes.length) {
+        console.error("Gallery elements not found.");
+        return;
     }
 
-    const getDistance = () =>
-      Math.max(0, track.scrollWidth - sticky.clientWidth);
+    const desktopQuery = window.matchMedia("(min-width: 901px)");
 
-    horizontalTween = gsap.to(track, {
-      x: () => -getDistance(),
-      ease: "none",
+    let horizontalTween = null;
 
-      scrollTrigger: {
-        id: "arshana-gallery",
-        trigger: section,
-        start: "top top",
-        end: () => `+=${getDistance()}`,
-        pin: sticky,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
+    // ---------------------------------------------
+    // PROGRESS INDICATOR
+    // ---------------------------------------------
 
-        onUpdate: self => {
-          updateProgress(self.progress);
+    function updateProgress(progress) {
 
-          const activeIndex = Math.min(
-            scenes.length - 1,
-            Math.floor(self.progress * scenes.length)
-          );
+        const progressBar = document.querySelector(
+            ".gallery-progress-line span"
+        );
 
-          scenes.forEach((scene, index) => {
-            scene.classList.toggle(
-              "is-active",
-              index === activeIndex
-            );
-          });
+        const counter = document.querySelector(
+            ".gallery-progress-count"
+        );
+
+        const total = scenes.length;
+
+        const current = Math.min(
+            total,
+            Math.floor(progress * total) + 1
+        );
+
+        if (progressBar) {
+            progressBar.style.width = `${progress * 100}%`;
         }
-      }
+
+        if (counter) {
+            counter.textContent =
+                `${String(current).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+        }
+    }
+
+
+    // ---------------------------------------------
+    // CLEAN PREVIOUS ANIMATION
+    // ---------------------------------------------
+
+    function destroyGallery() {
+
+        if (horizontalTween) {
+
+            horizontalTween.scrollTrigger?.kill();
+            horizontalTween.kill();
+
+            horizontalTween = null;
+        }
+
+        ScrollTrigger.getAll().forEach(trigger => {
+
+            if (trigger.vars.id === "arshana-gallery") {
+                trigger.kill();
+            }
+
+        });
+
+        gsap.set(track, {
+            clearProps: "transform"
+        });
+
+        section.style.height = "";
+    }
+
+
+    // ---------------------------------------------
+    // SETUP GALLERY
+    // ---------------------------------------------
+
+    function setupGallery() {
+
+        destroyGallery();
+
+        // Mobile and tablet layout
+        if (!desktopQuery.matches) {
+
+            scenes.forEach((scene, index) => {
+
+                scene.classList.toggle(
+                    "is-active",
+                    index === 0
+                );
+
+            });
+
+            updateProgress(0);
+
+            return;
+        }
+
+
+        // Calculate horizontal scroll distance
+        const getDistance = () => {
+
+            return Math.max(
+                0,
+                track.scrollWidth - sticky.clientWidth
+            );
+
+        };
+
+
+        // Horizontal GSAP animation
+        horizontalTween = gsap.to(track, {
+
+            x: () => -getDistance(),
+
+            ease: "none",
+
+            scrollTrigger: {
+
+                id: "arshana-gallery",
+
+                trigger: section,
+
+                start: "top top",
+
+                end: () => `+=${getDistance()}`,
+
+                pin: sticky,
+
+                scrub: 1,
+
+                invalidateOnRefresh: true,
+
+                anticipatePin: 1,
+
+                onUpdate: self => {
+
+                    // Update progress
+                    updateProgress(self.progress);
+
+
+                    // Update active scene
+                    const activeIndex = Math.min(
+                        scenes.length - 1,
+                        Math.floor(self.progress * scenes.length)
+                    );
+
+                    scenes.forEach((scene, index) => {
+
+                        scene.classList.toggle(
+                            "is-active",
+                            index === activeIndex
+                        );
+
+                    });
+
+                }
+
+            }
+
+        });
+
+        ScrollTrigger.refresh();
+
+    }
+
+
+    // ---------------------------------------------
+    // INITIALIZE
+    // ---------------------------------------------
+
+    setupGallery();
+
+
+    // ---------------------------------------------
+    // RESIZE HANDLING
+    // ---------------------------------------------
+
+    let resizeTimer;
+
+    window.addEventListener("resize", () => {
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+
+            setupGallery();
+
+        }, 250);
+
     });
 
-    ScrollTrigger.refresh();
-  }
 
-  // Wait for gallery images before calculating widths
-  const images = Array.from(track.querySelectorAll("img"));
+    // ---------------------------------------------
+    // SCREEN SIZE CHANGE
+    // ---------------------------------------------
 
-  const waitForImages = Promise.all(
-    images.map(img => {
-      if (img.complete) return Promise.resolve();
+    desktopQuery.addEventListener("change", setupGallery);
 
-      return new Promise(resolve => {
-        img.addEventListener("load", resolve, { once: true });
-        img.addEventListener("error", resolve, { once: true });
-      });
-    })
-  );
 
-  waitForImages.then(() => {
-    setupGallery();
-    ScrollTrigger.refresh();
-  });
+    // ---------------------------------------------
+    // PAGE LOAD REFRESH
+    // ---------------------------------------------
 
-  // Recalculate when the browser is resized
-  let resizeTimer;
+    window.addEventListener("load", () => {
 
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
+        ScrollTrigger.refresh();
 
-    resizeTimer = setTimeout(() => {
-      setupGallery();
-    }, 250);
-  });
+    });
 
-  // Desktop / mobile breakpoint changes
-  desktopQuery.addEventListener("change", setupGallery);
-
-  // Recalculate after all page assets finish loading
-  window.addEventListener("load", () => {
-    ScrollTrigger.refresh();
-  });
 });
+
+
+
 
 
 
@@ -1232,14 +1451,6 @@ const blogObserver = new IntersectionObserver(
 blogCards.forEach((card) => {
   blogObserver.observe(card);
 });
-
-
-
-
-
-
-
-
 
 
 

@@ -26,15 +26,39 @@
         </button>
 
         <div class="collapse navbar-collapse" id="arshanaNavbar">
+            
             <ul class="navbar-nav arshana-nav-links">
-                <li class="nav-item"><a class="nav-link " href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath === '/' ? 'active' : '' %>" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/about') ? 'active' : '' %>" href="/about">About Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/services') ? 'active' : '' %>" href="/services">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/projects') ? 'active' : '' %>" href="/projects">Projects</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/gallery') ? 'active' : '' %>" href="/gallery">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/blogs') ? 'active' : '' %>" href="/blogs">Blogs</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <%= currentPath.startsWith('/contact') ? 'active' : '' %>" href="/contact">Contact</a>
+                </li>
+
             </ul>
+
 
             <a href="/contact" class="arshana-nav-btn">
                 <span class="nav-btn-label">Let's discuss a project</span>

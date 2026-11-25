@@ -680,3 +680,273 @@
     transition: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* About page — additional editorial details */
+
+.ar-about-eyebrow {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--ar-orange);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.ar-heading-content {
+    flex: 1;
+}
+
+.ar-card-kicker {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--ar-orange);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.ar-approach-copy {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+}
+
+.ar-approach-copy .ar-mini-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.ar-approach-copy h3 {
+    margin: 0 0 7px;
+}
+
+.ar-approach-copy p {
+    margin: 0;
+}
+
+@media (max-width: 650px) {
+    .ar-about-eyebrow {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ARSHANA — COMPANY JOURNEY
+========================================= */
+
+.ar-journey-section {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 65px;
+    align-items: center;
+    margin-top: 35px;
+    padding: 55px;
+    overflow: hidden;
+    background: #f5f3ef;
+    color: #102743;
+}
+
+/* Year panel */
+
+.ar-journey-year {
+    position: relative;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 35px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #102743;
+    color: #fff;
+}
+
+/* Technical pipeline background */
+
+.ar-journey-year::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .5;
+    background:
+        linear-gradient(90deg, transparent 49%, #35516c 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, #35516c 50%, transparent 51%);
+    background-size: 75px 75px;
+    mask-image: linear-gradient(135deg, transparent, black);
+}
+
+/* Pipeline route */
+
+.ar-journey-year::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 130px;
+    right: -25px;
+    bottom: 25px;
+    border: 2px solid rgba(145, 203, 229, .35);
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 0 65px 0 0;
+    box-shadow:
+        0 -7px 0 -5px #e8753b,
+        0 0 0 1px transparent;
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+.ar-journey-year > span,
+.ar-mini-label {
+    color: #e8753b;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.ar-journey-year h3 {
+    margin: 14px 0;
+    color: #fff;
+    font-size: clamp(65px, 7vw, 90px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -5px;
+}
+
+.ar-journey-year h3 span {
+    color: #e8753b;
+}
+
+.ar-journey-year p {
+    margin: 0;
+    color: #b5c2ce;
+    font-size: 11px;
+    letter-spacing: .5px;
+}
+
+/* Description */
+
+.ar-journey-description {
+    position: relative;
+    z-index: 1;
+}
+
+.ar-journey-description h3 {
+    margin: 18px 0;
+    color: #102743;
+    font-size: clamp(28px, 3vw, 39px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+}
+
+.ar-journey-description h3 span {
+    color: #e8753b;
+}
+
+.ar-journey-description p {
+    max-width: 520px;
+    color: #687581;
+    font-size: 12px;
+    line-height: 2;
+    margin-bottom: 13px;
+}
+
+/* Small orange accent */
+
+.ar-journey-description::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 2px;
+    margin-top: 22px;
+    background: #e8753b;
+    transition: width .5s ease;
+}
+
+.ar-journey-section:hover .ar-journey-description::after {
+    width: 110px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .ar-journey-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 25px;
+    }
+
+    .ar-journey-year {
+        min-height: 220px;
+    }
+
+    .ar-journey-description h3 {
+        font-size: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
