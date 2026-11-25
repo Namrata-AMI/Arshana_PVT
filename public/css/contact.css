@@ -1312,3 +1312,102 @@
         padding: 45px 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   CONTACT FORM — REFINED & COMPACT
+========================================= */
+
+.ar-contact {
+    --contact-form-font: "DM Sans", sans-serif;
+}
+
+/* Slightly reduce form panel width and spacing */
+.contact-form-panel {
+    padding: 34px 35px;
+    max-width: 100%;
+}
+
+/* Form heading */
+.contact-form-heading {
+    padding-bottom: 23px;
+    margin-bottom: 25px;
+}
+
+.contact-form-heading h3 {
+    font-size: 25px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+/* Form fields */
+.contact-form-grid {
+    gap: 21px 24px;
+}
+
+.contact-field {
+    gap: 9px;
+}
+
+.contact-field label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    letter-spacing: .09em;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 11px 0;
+}
+
+/* Message field */
+.contact-field textarea {
+    min-height: 80px;
+}
+
+/* Footer */
+.contact-form-footer {
+    margin-top: 27px;
+    padding-top: 21px;
+}
+
+.contact-form-footer p {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+}
+
+.contact-submit {
+    min-width: 175px;
+    min-height: 48px;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .contact-form-panel {
+        padding: 25px 20px;
+    }
+}
